@@ -5,22 +5,24 @@
 
 import pandas as pd
 import os
+from logger import logger
 
 def extract_data(file_path: str) -> pd.DataFrame:
     """
     지정된 경로에서 데이터를 추출하여 Pandas DataFrame으로 반환합니다.
     """
-    print(f"[시스템] 데이터 추출을 시작합니다: {file_path}")
+    logger.info(f"데이터 추출을 시작합니다: {file_path}")
     
     # [방어 로직] 파일이 실제로 존재하는지 먼저 확인
     # (이유: 데이터가 없는데 무작정 읽으려다 프로그램 전체가 다운되는 치명적인 에러를 막기 위함입니다.)
     if not os.path.exists(file_path):
+        logger.error(f"오류: '{file_path}' 경로에 데이터가 존재하지 않습니다.")
         raise FileNotFoundError(f"오류: '{file_path}' 경로에 데이터가 존재하지 않습니다.")
         
     # [추출 로직] 파일이 있다면 Pandas를 이용해 데이터를 메모리로 읽어옴
     # (이유: 방대한 CSV 데이터를 표(Table) 형태로 깔끔하게 구조화하여 분석하기 쉽게 만듭니다.)
     df = pd.read_csv(file_path)
-    print(f"[시스템] 추출 완료! 총 {len(df)}개의 행(Row)을 가져왔습니다.")
+    logger.info(f"추출 완료! 총 {len(df)}개의 행(Row)을 가져왔습니다.")
     
     return df
 

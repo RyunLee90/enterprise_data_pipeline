@@ -1,0 +1,45 @@
+2026-02-23 19:15:15,522 - DataPipeline - INFO - 데이터 무결성 검사(Pydantic)를 시작합니다...
+2026-02-23 19:15:15,525 - DataPipeline - ERROR - [실패] 데이터 검증 오류 발생:
+3 validation errors for SalesSchema
+order_id
+  Field required [type=missing, input_value={'transaction_id': 1, 'us...', 'amount_manwon': 5.7}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+product_name
+  Field required [type=missing, input_value={'transaction_id': 1, 'us...', 'amount_manwon': 5.7}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+total_price
+  Field required [type=missing, input_value={'transaction_id': 1, 'us...', 'amount_manwon': 5.7}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-02-23 19:15:15,527 - DataPipeline - WARNING - 데이터 품질 이슈로 인해 적재 프로세스를 중단합니다.
+2026-02-23 19:17:30,232 - DataPipeline - INFO - 데이터 무결성 검사(Pydantic)를 시작합니다...
+2026-02-23 19:17:30,235 - DataPipeline - INFO - 데이터 적재(Load)를 시작합니다. 대상 테이블: sales_data
+2026-02-23 19:20:23,674 - DataPipeline - INFO - ==================================================
+2026-02-23 19:20:23,674 - DataPipeline - INFO - 엔터프라이즈 데이터 파이프라인 가동을 시작합니다.
+2026-02-23 19:20:23,675 - DataPipeline - INFO - ==================================================
+2026-02-23 19:20:23,675 - DataPipeline - INFO - ▶ 1단계: 데이터 추출 진행 중...
+2026-02-23 19:20:23,675 - DataPipeline - INFO - 데이터 추출을 시작합니다: C:\Users\ryunl\Desktop\Projects\enterprise_data_pipeline\data\raw\sample_data.csv
+2026-02-23 19:20:23,679 - DataPipeline - INFO - 추출 완료! 총 100개의 행(Row)을 가져왔습니다.
+2026-02-23 19:20:23,679 - DataPipeline - INFO - ▶ 2단계: 데이터 변환 진행 중...
+2026-02-23 19:20:23,680 - DataPipeline - INFO - 데이터 변환(Transform)을 시작합니다...
+2026-02-23 19:20:23,684 - DataPipeline - INFO - 변환 완료! 정제된 유효 데이터 행(Row) 개수: 66개 (실패건 제외됨)
+2026-02-23 19:20:23,685 - DataPipeline - INFO - ▶ 3단계: 데이터 적재 진행 중...
+2026-02-23 19:20:23,685 - DataPipeline - INFO - 데이터 무결성 검사(Pydantic)를 시작합니다...
+2026-02-23 19:20:23,685 - DataPipeline - INFO - Pydantic을 이용한 세계 표준 검증 시작...
+2026-02-23 19:20:23,688 - DataPipeline - INFO - 총 66건의 데이터 품질이 완벽합니다.
+2026-02-23 19:20:23,688 - DataPipeline - INFO - 데이터 적재(Load)를 시작합니다. 대상 테이블: sales_data
+2026-02-23 19:20:23,689 - DataPipeline - INFO - ▶ 4단계: 비즈니스 리포트 생성 진행 중...
+2026-02-23 19:20:23,689 - DataPipeline - INFO - ==================================================
+2026-02-23 19:20:23,689 - DataPipeline - INFO - 비즈니스 요약 리포트 생성을 시작합니다.
+2026-02-23 19:20:23,689 - DataPipeline - INFO - ==================================================
+2026-02-23 19:20:23,695 - DataPipeline - INFO - 총 분석 대상 거래 건수: 66건
+2026-02-23 19:20:23,695 - DataPipeline - INFO - 총 매출액: 1,655.8 만원
+2026-02-23 19:20:23,695 - DataPipeline - INFO - 평균 구매 고객 연령: 38.4 세
+2026-02-23 19:20:23,696 - DataPipeline - INFO - [거래 상태별 건수]
+2026-02-23 19:20:23,696 - DataPipeline - INFO - 
+status
+Completed    34
+Pending      32
+2026-02-23 19:20:23,697 - DataPipeline - INFO - ==================================================
+2026-02-23 19:20:23,697 - DataPipeline - INFO - ==================================================
+2026-02-23 19:20:23,697 - DataPipeline - INFO - 파이프라인 실행 성공! (소요 시간: 0.02초)
+2026-02-23 19:20:23,697 - DataPipeline - INFO - ==================================================
