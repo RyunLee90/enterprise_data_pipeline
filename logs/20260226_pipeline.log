@@ -1,0 +1,132 @@
+2026-02-26 18:30:51,050 - DataPipeline - INFO - ==================================================
+2026-02-26 18:30:51,051 - DataPipeline - INFO - 엔터프라이즈 데이터 파이프라인 가동을 시작합니다.
+2026-02-26 18:30:51,051 - DataPipeline - INFO - ==================================================
+2026-02-26 18:30:51,051 - DataPipeline - INFO - ▶ 1단계: 데이터 추출 진행 중...
+2026-02-26 18:30:51,051 - DataPipeline - INFO - 데이터 추출을 시작합니다: C:\Users\ryunl\Desktop\Projects\enterprise_data_pipeline\data\raw\sample_data.csv
+2026-02-26 18:30:51,057 - DataPipeline - INFO - 추출 완료! 총 100개의 행(Row)을 가져왔습니다.
+2026-02-26 18:30:51,058 - DataPipeline - INFO - ▶ 2단계: 데이터 변환 진행 중...
+2026-02-26 18:30:51,058 - DataPipeline - INFO - 데이터 변환(Transform)을 시작합니다...
+2026-02-26 18:30:51,064 - DataPipeline - INFO - 변환 완료! 정제된 유효 데이터 행(Row) 개수: 66개 (실패건 제외됨)
+2026-02-26 18:30:51,064 - DataPipeline - INFO - ▶ 3단계: 데이터 적재 진행 중...
+2026-02-26 18:30:51,064 - DataPipeline - INFO - 데이터 무결성 검사(Pydantic)를 시작합니다...
+2026-02-26 18:30:51,064 - DataPipeline - INFO - Pydantic을 이용한 세계 표준 검증 시작...
+2026-02-26 18:30:51,067 - DataPipeline - INFO - 총 66건의 데이터 품질이 완벽합니다.
+2026-02-26 18:30:51,067 - DataPipeline - INFO - 데이터 적재(Load)를 시작합니다. 대상 테이블: sales_data
+2026-02-26 18:30:51,067 - DataPipeline - INFO - ▶ 4단계: 비즈니스 리포트 생성 진행 중...
+2026-02-26 18:30:51,068 - DataPipeline - INFO - ==================================================
+2026-02-26 18:30:51,068 - DataPipeline - INFO - 비즈니스 요약 리포트 생성을 시작합니다.
+2026-02-26 18:30:51,068 - DataPipeline - INFO - ==================================================
+2026-02-26 18:30:51,075 - DataPipeline - INFO - 총 분석 대상 거래 건수: 66건
+2026-02-26 18:30:51,075 - DataPipeline - INFO - 총 매출액: 1,655.8 만원
+2026-02-26 18:30:51,076 - DataPipeline - INFO - 평균 구매 고객 연령: 38.4 세
+2026-02-26 18:30:51,076 - DataPipeline - INFO - [거래 상태별 건수]
+2026-02-26 18:30:51,076 - DataPipeline - INFO - 
+status
+Completed    34
+Pending      32
+2026-02-26 18:30:51,077 - DataPipeline - INFO - ==================================================
+2026-02-26 18:30:51,077 - DataPipeline - INFO - ==================================================
+2026-02-26 18:30:51,077 - DataPipeline - INFO - 파이프라인 실행 성공! (소요 시간: 0.03초)
+2026-02-26 18:30:51,077 - DataPipeline - INFO - ==================================================
+2026-02-26 18:36:55,384 - DataPipeline - INFO - ==================================================
+2026-02-26 18:36:55,384 - DataPipeline - INFO - 실시간 API 기반 엔터프라이즈 파이프라인 가동
+2026-02-26 18:36:55,384 - DataPipeline - INFO - ==================================================
+2026-02-26 18:36:55,384 - DataPipeline - INFO - ▶ 1단계: 외부 REST API 데이터 추출 중...
+2026-02-26 18:36:56,237 - DataPipeline - INFO - ▶ 2단계: 데이터 변환 및 정제 진행 중...
+2026-02-26 18:36:56,238 - DataPipeline - INFO - 데이터 변환(Transform)을 시작합니다...
+2026-02-26 18:36:56,239 - DataPipeline - INFO - 변환 완료! 최종 컬럼: ['id', 'name', 'username', 'email', 'phone', 'website', 'city', 'zipcode', 'company_name', 'email_domain']
+2026-02-26 18:36:56,240 - DataPipeline - INFO - 총 10건의 데이터 변환 성공
+2026-02-26 18:36:56,240 - DataPipeline - INFO - ▶ 3단계: 데이터 무결성 검증 및 DB 적재 중...
+2026-02-26 18:36:56,240 - DataPipeline - INFO - Pydantic 유저 데이터 검증 시작...
+2026-02-26 18:36:56,242 - DataPipeline - INFO - 총 10건 검증 통과!
+2026-02-26 18:36:56,242 - DataPipeline - INFO - 데이터 적재(Load)를 시작합니다. 대상 테이블: users_data
+2026-02-26 18:36:56,251 - DataPipeline - INFO - 총 10건 적재 완료 → C:\Users\ryunl\Desktop\Projects\enterprise_data_pipeline\data\processed\enterprise_dw.db
+2026-02-26 18:36:56,251 - DataPipeline - INFO - ▶ 4단계: 비즈니스 분석 리포트 생성 중...
+2026-02-26 18:36:56,251 - DataPipeline - INFO - ==================================================
+2026-02-26 18:36:56,251 - DataPipeline - INFO - 유저 데이터 분석 리포트 생성 시작
+2026-02-26 18:36:56,251 - DataPipeline - INFO - ==================================================
+2026-02-26 18:36:56,254 - DataPipeline - INFO - 총 수집 유저 수: 10명
+2026-02-26 18:36:56,255 - DataPipeline - INFO - [도시별 유저 수]
+city
+Gwenborough       1
+Wisokyburgh       1
+McKenziehaven     1
+South Elvis       1
+Roscoeview        1
+South Christy     1
+Howemouth         1
+Aliyaview         1
+Bartholomebury    1
+Lebsackbury       1
+2026-02-26 18:36:56,256 - DataPipeline - INFO - [이메일 도메인별 유저 수]
+email_domain
+april.biz      1
+melissa.tv     1
+yesenia.net    1
+kory.org       1
+annie.ca       1
+jasper.info    1
+billy.biz      1
+rosamond.me    1
+dana.io        1
+karina.biz     1
+2026-02-26 18:36:56,256 - DataPipeline - INFO - [회사별 소속 유저]
+2026-02-26 18:36:56,258 - DataPipeline - INFO -   Abernathy Group: Nicholas Runolfsdottir V
+2026-02-26 18:36:56,258 - DataPipeline - INFO -   Considine-Lockman: Mrs. Dennis Schulist
+2026-02-26 18:36:56,258 - DataPipeline - INFO -   Deckow-Crist: Ervin Howell
+2026-02-26 18:36:56,258 - DataPipeline - INFO -   Hoeger LLC: Clementina DuBuque
+2026-02-26 18:36:56,259 - DataPipeline - INFO -   Johns Group: Kurtis Weissnat
+2026-02-26 18:36:56,259 - DataPipeline - INFO -   Keebler LLC: Chelsey Dietrich
+2026-02-26 18:36:56,259 - DataPipeline - INFO -   Robel-Corkery: Patricia Lebsack
+2026-02-26 18:36:56,259 - DataPipeline - INFO -   Romaguera-Crona: Leanne Graham
+2026-02-26 18:36:56,259 - DataPipeline - INFO -   Romaguera-Jacobson: Clementine Bauch
+2026-02-26 18:36:56,259 - DataPipeline - INFO -   Yost and Sons: Glenna Reichert
+2026-02-26 18:36:56,260 - DataPipeline - INFO - ==================================================
+2026-02-26 18:36:56,260 - DataPipeline - INFO - ==================================================
+2026-02-26 18:36:56,260 - DataPipeline - INFO - API 기반 파이프라인 실행 성공!
+2026-02-26 18:36:56,260 - DataPipeline - INFO - ==================================================
+2026-02-26 18:45:28,317 - DataPipeline - INFO - ==================================================
+2026-02-26 18:45:28,317 - DataPipeline - INFO - 실시간 API 기반 엔터프라이즈 파이프라인 가동
+2026-02-26 18:45:28,317 - DataPipeline - INFO - ==================================================
+2026-02-26 18:45:28,317 - DataPipeline - INFO - ▶ 1단계: 외부 REST API 데이터 추출 중...
+2026-02-26 18:45:29,926 - DataPipeline - INFO - ▶ 2단계: 데이터 변환 및 정제 진행 중...
+2026-02-26 18:45:29,926 - DataPipeline - INFO - 데이터 변환(Transform)을 시작합니다...
+2026-02-26 18:45:29,932 - DataPipeline - INFO - 변환 완료! 최종 컬럼: ['gender', 'full_name', 'email', 'email_domain', 'phone', 'cell', 'nat', 'city', 'state', 'country', 'postcode', 'age', 'registered_years']
+2026-02-26 18:45:29,932 - DataPipeline - INFO - 총 1000건 변환 성공
+2026-02-26 18:45:29,932 - DataPipeline - INFO - ▶ 3단계: 데이터 무결성 검증 및 DB 적재 중...
+2026-02-26 18:45:29,933 - DataPipeline - INFO - Pydantic 유저 데이터 검증 시작...
+2026-02-26 18:45:29,946 - DataPipeline - INFO - 총 1000건 검증 통과!
+2026-02-26 18:45:29,947 - DataPipeline - INFO - 데이터 적재(Load)를 시작합니다. 대상 테이블: users_data
+2026-02-26 18:45:29,962 - DataPipeline - INFO - 총 1000건 적재 완료 → C:\Users\ryunl\Desktop\Projects\enterprise_data_pipeline\data\processed\enterprise_dw.db
+2026-02-26 18:45:29,962 - DataPipeline - INFO - ▶ 4단계: 비즈니스 분석 리포트 생성 중...
+2026-02-26 18:45:29,962 - DataPipeline - INFO - ==================================================
+2026-02-26 18:45:29,962 - DataPipeline - INFO - 유저 데이터 분석 리포트 생성 시작
+2026-02-26 18:45:29,962 - DataPipeline - INFO - ==================================================
+2026-02-26 18:45:29,967 - DataPipeline - INFO - 총 수집 유저 수: 1000명
+2026-02-26 18:45:29,968 - DataPipeline - INFO - [성별 분포]
+gender
+female    505
+male      495
+2026-02-26 18:45:29,969 - DataPipeline - INFO - [국적별 유저 수]
+nat
+US    267
+GB    253
+CA    249
+FR    231
+2026-02-26 18:45:29,969 - DataPipeline - INFO - [나이 통계]
+2026-02-26 18:45:29,970 - DataPipeline - INFO -   평균 나이: 52.0세
+2026-02-26 18:45:29,970 - DataPipeline - INFO -   최연소:    24세
+2026-02-26 18:45:29,970 - DataPipeline - INFO -   최연장:    81세
+2026-02-26 18:45:29,970 - DataPipeline - INFO -   평균 가입 연수: 13.4년
+2026-02-26 18:45:29,970 - DataPipeline - INFO - [국가별 유저가 가장 많은 도시 TOP 3]
+2026-02-26 18:45:29,972 - DataPipeline - INFO -   Canada: Sherbrooke(8명), Woodstock(7명), Fountainbleu(6명)
+2026-02-26 18:45:29,973 - DataPipeline - INFO -   France: Lyon(9명), Saint-Pierre(8명), Nancy(7명)
+2026-02-26 18:45:29,974 - DataPipeline - INFO -   United Kingdom: Brighton and Hove(12명), Ely(8명), Liverpool(8명)
+2026-02-26 18:45:29,974 - DataPipeline - INFO -   United States: Cupertino(4명), Sacramento(4명), Murrieta(4명)
+2026-02-26 18:45:29,975 - DataPipeline - INFO - [이메일 도메인 TOP 5]
+email_domain
+example.com    1000
+2026-02-26 18:45:29,975 - DataPipeline - INFO - ==================================================
+2026-02-26 18:45:29,975 - DataPipeline - INFO - ==================================================
+2026-02-26 18:45:29,976 - DataPipeline - INFO - API 기반 파이프라인 실행 성공!
+2026-02-26 18:45:29,976 - DataPipeline - INFO - ==================================================

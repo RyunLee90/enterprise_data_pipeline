@@ -1,41 +1,64 @@
 # 파일 위치: C:\Users\ryunl\Desktop\Projects\enterprise_data_pipeline\src\transform.py
 
 import pandas as pd
-from logger import logger
+from logger import setup_logger
+
+logger = setup_logger()
 
 def transform_data(df: pd.DataFrame) -> pd.DataFrame:
     """
-    추출된 Raw 데이터를 입력받아 불필요한 데이터를 제거하고 새로운 분석용 열(Column)을 추가합니다.
+    RandomUser API Raw 데이터를 분석용 평탄 구조로 변환합니다.
+    중첩된 dict 컬럼들을 모두 펼쳐서 단순 컬럼으로 만듭니다.
     """
     logger.info("데이터 변환(Transform)을 시작합니다...")
-    
-    # 1. 원본 데이터 보호를 위한 복사본 생성
-    # (이유: 파이썬에서 원본 데이터프레임을 직접 수정하면 경고 에러가 나거나 데이터가 꼬일 수 있으므로, 항상 안전하게 복사본(copy)을 만들어 작업합니다.)
+
     processed_df = df.copy()
-    
-    # 2. 비즈니스 로직 1: 결제 실패('Failed') 데이터 필터링(제거)
-    # (이유: 실질적인 매출 분석을 위해서는 'Completed(완료)'나 'Pending(대기)' 상태의 유의미한 거래만 남겨야 하기 때문입니다.)
-    processed_df = processed_df[processed_df['status'] != 'Failed']
-    
-    # 3. 비즈니스 로직 2: 구매 금액 단위 변경 (새로운 파생 변수 생성)
-    # (이유: 금액 단위가 너무 크면 분석가가 한눈에 파악하기 힘드므로, 기존 'purchase_amount'를 10,000으로 나누어 '만원' 단위의 새로운 열을 만듭니다.)
-    processed_df['amount_manwon'] = processed_df['purchase_amount'] / 10000
-    
-    logger.info(f"변환 완료! 정제된 유효 데이터 행(Row) 개수: {len(processed_df)}개 (실패건 제외됨)")
-    
+
+    # 1. name 딕셔너리 → full_name (first + last)
+    processed_df['full_name'] = processed_df['name'].apply(
+        lambda x: f"{x.get('first', '')} {x.get('last', '')}" if isinstance(x, dict) else ''
+    )
+
+    # 2. location 딕셔너리 → city, state, country, postcode
+    processed_df['city']     = processed_df['location'].apply(lambda x: x.get('city', '')    if isinstance(x, dict) else '')
+    processed_df['state']    = processed_df['location'].apply(lambda x: x.get('state', '')   if isinstance(x, dict) else '')
+    processed_df['country']  = processed_df['location'].apply(lambda x: x.get('country', '') if isinstance(x, dict) else '')
+    processed_df['postcode'] = processed_df['location'].apply(
+        lambda x: str(x.get('postcode', '')) if isinstance(x, dict) else ''
+    )
+
+    # 3. dob 딕셔너리 → age (나이)
+    processed_df['age'] = processed_df['dob'].apply(
+        lambda x: x.get('age', 0) if isinstance(x, dict) else 0
+    )
+
+    # 4. registered 딕셔너리 → registered_years (가입 연수)
+    processed_df['registered_years'] = processed_df['registered'].apply(
+        lambda x: x.get('age', 0) if isinstance(x, dict) else 0
+    )
+
+    # 5. email 도메인 추출 (파생 변수)
+    processed_df['email_domain'] = processed_df['email'].apply(
+        lambda x: x.split('@')[-1] if '@' in str(x) else ''
+    )
+
+    # 6. gender, nat(국적), phone, cell, email은 그대로 유지
+    keep_cols = [
+        'gender', 'full_name', 'email', 'email_domain',
+        'phone', 'cell', 'nat',
+        'city', 'state', 'country', 'postcode',
+        'age', 'registered_years'
+    ]
+    processed_df = processed_df[keep_cols]
+
+    logger.info(f"변환 완료! 최종 컬럼: {list(processed_df.columns)}")
+    logger.info(f"총 {len(processed_df)}건 변환 성공")
+
     return processed_df
 
 if __name__ == "__main__":
-    # 이 변환 모듈이 잘 작동하는지 자체 테스트하기 위한 임시 코드
-    # (이유: 우리가 만든 정수기가 물을 잘 걸러내는지, 이전 단계(추출)의 코드를 불러와서 연결 테스트를 해보는 과정입니다.)
-    from extract import extract_data  # 1단계에서 만든 추출 함수를 가져옵니다.
-    
-    # 1. 데이터 추출
-    raw_data = extract_data("../data/raw/sample_data.csv")
-    
-    # 2. 데이터 변환
-    cleaned_data = transform_data(raw_data)
-    
-    # 3. 결과 확인 (상위 5개 행만 출력하여 눈으로 검증)
-    print("\n[미리보기] 정제된 데이터 상위 5건:")
-    print(cleaned_data.head())
+    from extract_api import extract_from_api
+    raw_data = extract_from_api()
+    if raw_data is not None:
+        cleaned = transform_data(raw_data)
+        print(cleaned.head().to_string())
