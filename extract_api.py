@@ -1,45 +1,84 @@
 # 파일 위치: C:\Users\ryunl\Desktop\Projects\enterprise_data_pipeline\src\extract_api.py
 
-import requests
 import pandas as pd
+import yfinance as yf
+from datetime import datetime, timedelta
+
+# 6개 종목, 최근 2년치 일일 주가 (약 500일 x 6종목 = 약 3,000건)
+TICKERS = ["AMZW", "NVDA", "AVGW", "TSLA", "AAPL", "MSFT"]
+
 
 def extract_from_api():
     """
-    외부 REST API 서버와 통신하여 실시간 데이터를 수집하고
-    Pandas DataFrame으로 변환하여 반환합니다.
+    yfinance를 사용하여 지정 종목의 최근 2년치 일일 주가 데이터를
+    한 번에 가져와 Pandas DataFrame으로 반환합니다.
     """
-    # 연습용 오픈 API 주소 (가상의 고객 데이터 10건을 무료로 제공)
-    url = "https://randomuser.me/api/?results=1000&nat=us,gb,fr,ca"
-    
-    print(f"\n[시스템] 외부 서버에 데이터 연결을 시도합니다... (URL: {url})")
-    
+    end = datetime.now()
+    start = end - timedelta(days=365 * 2)
+
+    print(f"\n[시스템] yfinance로 {len(TICKERS)}개 종목 주가 수집 중... (기간: {start.date()} ~ {end.date()})")
+
     try:
-        # 1. 서버의 문을 두드리고 데이터 요청 (최대 10초 대기)
-        response = requests.get(url, timeout=10)
-        
-        # 2. 서버가 '200 OK' (정상) 신호를 보냈는지 확인
-        if response.status_code == 200:
-            # 3. JSON 응답에서 실제 데이터 리스트는 'results' 키 안에 있음
-            data = response.json()
-            results = data['results']
+        # 여러 종목을 한 번에 다운로드 (단일 API 호출)
+        data = yf.download(
+            TICKERS,
+            start=start,
+            end=end,
+            group_by="ticker",
+            progress=False,
+            auto_adjust=False,
+            threads=True,
+        )
 
-            # 4. 분석하기 편한 DataFrame으로 변환
-            df = pd.DataFrame(results)
+        if data.empty:
+            print("[오류] 수집된 데이터가 없습니다.")
+            return None
 
-            print("="*50)
-            print(f"[성공] 외부 데이터 {len(df)}건 수집 완료!")
-            print(f"[미리보기] 컬럼 목록: {list(df.columns)}")
-            print("="*50)
-
-            return df
+        # MultiIndex 컬럼(여러 종목) → 평탄화: 각 행에 Ticker 추가
+        if len(TICKERS) == 1:
+            data.columns = [f"{c}" for c in data.columns]
+            data["Ticker"] = TICKERS[0]
+            data = data.reset_index()
         else:
-            # 404(페이지 없음), 500(서버 오류) 등의 에러 처리
-            raise ConnectionError(f"[오류] 서버 비정상 응답. 상태 코드: {response.status_code}")
-            
-    except requests.exceptions.RequestException as e:
-        print(f"[치명적 오류] API 서버와 통신할 수 없습니다: {e}")
+            # group_by='ticker' → MultiIndex columns (Ticker, Open/High/Low/Close/Volume)
+            if isinstance(data.columns, pd.MultiIndex):
+                available = data.columns.get_level_values(0).unique().tolist()
+            else:
+                available = data.columns.tolist()
+            frames = []
+            for ticker in TICKERS:
+                if ticker not in available:
+                    continue
+                sub = data[ticker][["Open", "High", "Low", "Close", "Volume"]].copy()
+                sub = sub.reset_index()
+                sub["Ticker"] = ticker
+                frames.append(sub)
+            data = pd.concat(frames, ignore_index=True)
+
+        if data.empty:
+            print("[오류] 유효한 종목 데이터가 없습니다.")
+            return None
+
+        # 컬럼명 통일 (Date, Open, High, Low, Close, Volume, Ticker)
+        data = data.rename(columns={"Date": "Date"})
+        if "Date" not in data.columns and data.index.name == "Date":
+            data = data.reset_index()
+        data = data[["Date", "Open", "High", "Low", "Close", "Volume", "Ticker"]]
+
+        data["Date"] = pd.to_datetime(data["Date"]).dt.tz_localize(None)
+        data = data.dropna(subset=["Close", "Volume"])
+
+        print("=" * 50)
+        print(f"[성공] 주가 데이터 {len(data)}건 수집 완료!")
+        print(f"[미리보기] 컬럼: {list(data.columns)}")
+        print("=" * 50)
+
+        return data
+
+    except Exception as e:
+        print(f"[치명적 오류] 데이터 수집 실패: {e}")
         return None
 
+
 if __name__ == "__main__":
-    # 이 파일만 단독으로 실행했을 때 테스트가 돌아가도록 설정
     extract_from_api()

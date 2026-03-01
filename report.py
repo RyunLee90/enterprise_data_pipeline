@@ -7,12 +7,18 @@ from logger import setup_logger
 
 logger = setup_logger()
 
-def generate_report(db_name: str = "enterprise_dw.db", table_name: str = "users_data"):
+DEFAULT_DB = "enterprise_dw.db"
+DEFAULT_TABLE = "stock_prices"
+
+
+def generate_report(db_name: str = DEFAULT_DB, table_name: str = DEFAULT_TABLE):
     """
-    SQLite DB에 적재된 유저 데이터를 읽어와 분석 리포트를 출력합니다.
+    SQLite DB의 stock_prices 테이블을 읽어
+    - 전체 데이터 중 거래량(Volume)이 가장 많았던 날
+    - 종목별 최고가 대비 현재가 하락율(MDD)을 계산하여 출력합니다.
     """
     logger.info("=" * 50)
-    logger.info("유저 데이터 분석 리포트 생성 시작")
+    logger.info("주가 데이터 분석 리포트 생성 시작")
     logger.info("=" * 50)
 
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,43 +33,46 @@ def generate_report(db_name: str = "enterprise_dw.db", table_name: str = "users_
 
     try:
         df = pd.read_sql(f"SELECT * FROM {table_name}", conn)
+        df["Date"] = pd.to_datetime(df["Date"])
 
-        # 1. 총 유저 수
-        logger.info(f"총 수집 유저 수: {len(df)}명")
+        if df.empty:
+            logger.error("테이블에 데이터가 없습니다.")
+            return
 
-        # 2. 성별 분포
-        gender_counts = df['gender'].value_counts()
-        logger.info("[성별 분포]\n" + gender_counts.to_string())
+        # 1. 전체 데이터 중 거래량(Volume)이 가장 많았던 날
+        idx_max_vol = df["Volume"].idxmax()
+        row_max = df.loc[idx_max_vol]
+        logger.info("[거래량 최대일]")
+        logger.info(
+            f"  일자: {row_max['Date'].strftime('%Y-%m-%d') if hasattr(row_max['Date'], 'strftime') else row_max['Date']}, "
+            f"종목: {row_max['Ticker']}, "
+            f"거래량: {int(row_max['Volume']):,}"
+        )
 
-        # 3. 국적(nat)별 유저 수
-        nat_counts = df['nat'].value_counts()
-        logger.info("[국적별 유저 수]\n" + nat_counts.to_string())
+        # 2. 종목별 최고가 대비 현재가 하락율(MDD)
+        # 현재가 = 각 종목의 가장 최근 종가(Close)
+        # 최고가 = 각 종목의 기간 내 최고 High (또는 Close 기준 최고가)
+        logger.info("[종목별 MDD (최고가 대비 현재가 하락율)]")
+        for ticker in df["Ticker"].unique():
+            sub = df[df["Ticker"] == ticker].sort_values("Date")
+            if sub.empty:
+                continue
+            period_high = sub["High"].max()
+            current_price = sub["Close"].iloc[-1]
+            if period_high and period_high > 0:
+                mdd_pct = (1 - current_price / period_high) * 100
+                logger.info(f"  {ticker}: 최고가 {period_high:.2f} → 현재가 {current_price:.2f}, MDD {mdd_pct:.2f}%")
+            else:
+                logger.info(f"  {ticker}: 데이터 부족")
 
-        # 4. 나이 통계
-        logger.info(f"[나이 통계]")
-        logger.info(f"  평균 나이: {df['age'].mean():.1f}세")
-        logger.info(f"  최연소:    {df['age'].min()}세")
-        logger.info(f"  최연장:    {df['age'].max()}세")
-
-        # 5. 가입 연수 평균
-        logger.info(f"  평균 가입 연수: {df['registered_years'].mean():.1f}년")
-
-        # 6. 국가별 도시 TOP 3
-        logger.info("[국가별 유저가 가장 많은 도시 TOP 3]")
-        for country, group in df.groupby('country'):
-            top_cities = group['city'].value_counts().head(3)
-            logger.info(f"  {country}: {', '.join([f'{c}({n}명)' for c, n in top_cities.items()])}")
-
-        # 7. 이메일 도메인 TOP 5
-        top_domains = df['email_domain'].value_counts().head(5)
-        logger.info("[이메일 도메인 TOP 5]\n" + top_domains.to_string())
+        logger.info("=" * 50)
 
     except Exception as e:
         logger.error(f"리포트 생성 중 오류 발생: {e}")
 
     finally:
         conn.close()
-        logger.info("=" * 50)
+
 
 if __name__ == "__main__":
     generate_report()
