@@ -1,0 +1,942 @@
+2026-03-01 14:24:11,943 - DataPipeline - INFO - ==================================================
+2026-03-01 14:24:11,943 - DataPipeline - INFO - 실시간 API 기반 엔터프라이즈 파이프라인 가동
+2026-03-01 14:24:11,945 - DataPipeline - INFO - ==================================================
+2026-03-01 14:24:11,945 - DataPipeline - INFO - ▶ 1단계: 외부 REST API 데이터 추출 중...
+2026-03-01 14:24:14,829 - DataPipeline - INFO - ▶ 2단계: 데이터 변환 및 정제 진행 중...
+2026-03-01 14:24:14,829 - DataPipeline - INFO - 데이터 변환(Transform)을 시작합니다...
+2026-03-01 14:24:14,838 - DataPipeline - INFO - 변환 완료! 최종 컬럼: ['Date', 'Open', 'High', 'Low', 'Close', 'Volume', 'Ticker']
+2026-03-01 14:24:14,838 - DataPipeline - INFO - 총 2326건 변환 성공
+2026-03-01 14:24:14,838 - DataPipeline - INFO - ▶ 3단계: 데이터 무결성 검증 및 DB 적재 중...
+2026-03-01 14:24:14,838 - DataPipeline - INFO - Pydantic 주가 데이터 검증 시작...
+2026-03-01 14:24:14,867 - DataPipeline - INFO - 총 2326건 검증 통과!
+2026-03-01 14:24:14,868 - DataPipeline - INFO - 데이터 적재(Load)를 시작합니다. 대상 테이블: stock_prices
+2026-03-01 14:24:14,892 - DataPipeline - INFO - 총 2326건 적재 완료 → C:\Users\PC\Desktop\Ryun\data\processed\enterprise_dw.db
+2026-03-01 14:24:14,892 - DataPipeline - INFO - ▶ 4단계: 비즈니스 분석 리포트 생성 중...
+2026-03-01 14:24:14,892 - DataPipeline - INFO - ==================================================
+2026-03-01 14:24:14,892 - DataPipeline - INFO - 주가 데이터 분석 리포트 생성 시작
+2026-03-01 14:24:14,892 - DataPipeline - INFO - ==================================================
+2026-03-01 14:24:14,907 - DataPipeline - INFO - [거래량 최대일]
+2026-03-01 14:24:14,908 - DataPipeline - INFO -   일자: 2024-03-08, 종목: NVDA, 거래량: 1,142,269,000
+2026-03-01 14:24:14,908 - DataPipeline - INFO - [종목별 MDD (최고가 대비 현재가 하락율)]
+2026-03-01 14:24:14,912 - DataPipeline - INFO -   AMZW: 최고가 54.92 → 현재가 35.77, MDD 34.87%
+2026-03-01 14:24:14,913 - DataPipeline - INFO -   NVDA: 최고가 212.19 → 현재가 177.19, MDD 16.49%
+2026-03-01 14:24:14,914 - DataPipeline - INFO -   AVGW: 최고가 64.13 → 현재가 39.86, MDD 37.84%
+2026-03-01 14:24:14,915 - DataPipeline - INFO -   TSLA: 최고가 498.83 → 현재가 402.51, MDD 19.31%
+2026-03-01 14:24:14,916 - DataPipeline - INFO -   AAPL: 최고가 288.62 → 현재가 264.18, MDD 8.47%
+2026-03-01 14:24:14,917 - DataPipeline - INFO -   MSFT: 최고가 555.45 → 현재가 392.74, MDD 29.29%
+2026-03-01 14:24:14,917 - DataPipeline - INFO - ==================================================
+2026-03-01 14:24:14,917 - DataPipeline - INFO - ==================================================
+2026-03-01 14:24:14,917 - DataPipeline - INFO - API 기반 파이프라인 실행 성공!
+2026-03-01 14:24:14,917 - DataPipeline - INFO - ==================================================
+2026-03-01 14:57:38,552 - DataPipeline - INFO - 예약 리스트 추출: C:\Users\PC\Desktop\Ryun\data\raw\Reservation List_20260301.xlsx
+2026-03-01 14:57:38,552 - DataPipeline - INFO - 데이터 추출을 시작합니다: C:\Users\PC\Desktop\Ryun\data\raw\Reservation List_20260301.xlsx
+2026-03-01 14:57:56,066 - DataPipeline - INFO - 예약 리스트 추출: C:\Users\PC\Desktop\Ryun\data\raw\Reservation List_20260301.xlsx
+2026-03-01 14:57:56,066 - DataPipeline - INFO - 데이터 추출을 시작합니다: C:\Users\PC\Desktop\Ryun\data\raw\Reservation List_20260301.xlsx
+2026-03-01 14:57:56,608 - DataPipeline - INFO - 추출 완료! 총 1142개의 행(Row)을 가져왔습니다.
+2026-03-01 14:58:23,280 - DataPipeline - INFO - 예약 리스트 추출: C:\Users\PC\Desktop\Ryun\data\raw\Reservation List_20260301.xlsx
+2026-03-01 14:58:23,281 - DataPipeline - INFO - 데이터 추출을 시작합니다: C:\Users\PC\Desktop\Ryun\data\raw\Reservation List_20260301.xlsx
+2026-03-01 14:58:23,724 - DataPipeline - INFO - 추출 완료! 총 1141개의 행(Row)을 가져왔습니다.
+2026-03-01 14:58:23,724 - DataPipeline - INFO - 예약 데이터 변환(Transform)을 시작합니다...
+2026-03-01 14:58:23,724 - DataPipeline - WARNING - 요금(Rate/Amount) 컬럼을 찾을 수 없어 0원 제외 로직을 건너뜁니다.
+2026-03-01 14:58:23,724 - DataPipeline - WARNING - 상태(Status) 컬럼을 찾을 수 없어 취소 제외 로직을 건너뜁니다.
+2026-03-01 14:58:23,725 - DataPipeline - WARNING - 매핑 후 데이터가 비었습니다. 원본 CSV 컬럼명을 확인하세요.
+2026-03-01 14:58:23,725 - DataPipeline - INFO - 예약 변환 완료! 최종 컬럼: [], 총 0건
+2026-03-01 14:58:48,539 - DataPipeline - INFO - 예약 리스트 추출: C:\Users\PC\Desktop\Ryun\data\raw\Reservation List_20260301.xlsx
+2026-03-01 14:58:48,540 - DataPipeline - INFO - 데이터 추출을 시작합니다: C:\Users\PC\Desktop\Ryun\data\raw\Reservation List_20260301.xlsx
+2026-03-01 14:58:49,002 - DataPipeline - INFO - 추출 완료! 총 1140개의 행(Row)을 가져왔습니다.
+2026-03-01 14:58:49,004 - DataPipeline - INFO - 예약 데이터 변환(Transform)을 시작합니다...
+2026-03-01 14:58:49,005 - DataPipeline - INFO - 개인정보 컬럼 삭제: ['Guest Name', 'Mobile', 'E-Mail', 'Caller', 'Caller Tel']
+2026-03-01 14:58:49,007 - DataPipeline - INFO - 객실 요금 0원 행 제외: 185건 제거
+2026-03-01 14:58:49,010 - DataPipeline - INFO - 취소(Cancelled) 예약 제외: 0건 제거
+2026-03-01 14:58:49,014 - DataPipeline - INFO - 예약 변환 완료! 최종 컬럼: ['transaction_id', 'check_in', 'check_out', 'room_type', 'source_market', 'rate', 'status'], 총 955건
+2026-03-01 15:10:53,959 - DataPipeline - INFO - ============================================================
+2026-03-01 15:10:53,960 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 15:10:53,960 - DataPipeline - INFO - ============================================================
+2026-03-01 15:10:53,960 - DataPipeline - INFO - 호텔 예약 리스트 추출: C:\Users\PC\Desktop\Ryun\data\raw\hotel\res_list_2024.csv
+2026-03-01 15:10:53,960 - DataPipeline - ERROR - 오류: 'C:\Users\PC\Desktop\Ryun\data\raw\hotel\res_list_2024.csv' 경로에 파일이 없습니다.
+2026-03-01 15:10:53,961 - DataPipeline - ERROR - 파일 없음: 오류: 'C:\Users\PC\Desktop\Ryun\data\raw\hotel\res_list_2024.csv' 경로에 파일이 없습니다.
+2026-03-01 15:10:56,206 - DataPipeline - INFO - ============================================================
+2026-03-01 15:10:56,206 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 15:10:56,206 - DataPipeline - INFO - ============================================================
+2026-03-01 15:10:56,207 - DataPipeline - INFO - 호텔 예약 리스트 추출: C:\Users\PC\Desktop\Ryun\data\raw\hotel\res_list_2024.csv
+2026-03-01 15:10:56,207 - DataPipeline - ERROR - 오류: 'C:\Users\PC\Desktop\Ryun\data\raw\hotel\res_list_2024.csv' 경로에 파일이 없습니다.
+2026-03-01 15:10:56,207 - DataPipeline - ERROR - 파일 없음: 오류: 'C:\Users\PC\Desktop\Ryun\data\raw\hotel\res_list_2024.csv' 경로에 파일이 없습니다.
+2026-03-01 15:11:23,642 - DataPipeline - INFO - ============================================================
+2026-03-01 15:11:23,642 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 15:11:23,642 - DataPipeline - INFO - ============================================================
+2026-03-01 15:11:23,643 - DataPipeline - INFO - 호텔 예약 리스트 추출: C:\Users\PC\Desktop\Ryun\data\raw\hotel\res_list_2024.csv
+2026-03-01 15:11:23,643 - DataPipeline - ERROR - 오류: 'C:\Users\PC\Desktop\Ryun\data\raw\hotel\res_list_2024.csv' 경로에 파일이 없습니다.
+2026-03-01 15:11:23,643 - DataPipeline - ERROR - 파일 없음: 오류: 'C:\Users\PC\Desktop\Ryun\data\raw\hotel\res_list_2024.csv' 경로에 파일이 없습니다.
+2026-03-01 15:12:51,515 - DataPipeline - INFO - ============================================================
+2026-03-01 15:12:51,515 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 15:12:51,515 - DataPipeline - INFO - ============================================================
+2026-03-01 15:12:51,516 - DataPipeline - INFO - 호텔 예약 리스트 추출: C:\Users\PC\Desktop\Ryun\data\raw\hotel\res_list_2024.csv
+2026-03-01 15:12:51,516 - DataPipeline - ERROR - 오류: 'C:\Users\PC\Desktop\Ryun\data\raw\hotel\res_list_2024.csv' 경로에 파일이 없습니다.
+2026-03-01 15:12:51,516 - DataPipeline - ERROR - 파일 없음: 오류: 'C:\Users\PC\Desktop\Ryun\data\raw\hotel\res_list_2024.csv' 경로에 파일이 없습니다.
+2026-03-01 15:13:30,879 - DataPipeline - INFO - ============================================================
+2026-03-01 15:13:30,879 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 15:13:30,879 - DataPipeline - INFO - ============================================================
+2026-03-01 15:13:30,880 - DataPipeline - INFO - 호텔 예약 리스트 추출: C:\Users\PC\Desktop\Ryun\data\raw\hotel\res_list_2024.csv
+2026-03-01 15:13:30,892 - DataPipeline - INFO - 추출 완료! 총 3건 로드.
+2026-03-01 15:13:30,892 - DataPipeline - INFO - 개인정보 컬럼 즉시 삭제: ['고객명', '전화번호', '이메일']
+2026-03-01 15:13:30,892 - DataPipeline - INFO - 호텔 예약 데이터 변환(Transform)을 시작합니다...
+2026-03-01 15:13:30,895 - DataPipeline - INFO - 마켓코드 GRP/MICE 제거: 0건
+2026-03-01 15:13:30,896 - DataPipeline - INFO - 실객실료 0원 행 제거: 0건
+2026-03-01 15:13:30,896 - DataPipeline - INFO - 호텔 변환 완료! 총 3건
+2026-03-01 15:13:30,896 - DataPipeline - INFO - ============================================================
+2026-03-01 15:13:30,896 - DataPipeline - INFO - 호텔 데이터 분석 리포트
+2026-03-01 15:13:30,896 - DataPipeline - INFO - ============================================================
+2026-03-01 15:13:30,896 - DataPipeline - INFO - [OTA 분석] 예약경로(Source)별 점유율
+2026-03-01 15:13:30,897 - DataPipeline - INFO -   OTA_A: 1건 (33.3%)
+2026-03-01 15:13:30,897 - DataPipeline - INFO -   직접: 1건 (33.3%)
+2026-03-01 15:13:30,897 - DataPipeline - INFO -   OTA_B: 1건 (33.3%)
+2026-03-01 15:13:30,897 - DataPipeline - INFO - [시계열] 입실일 기준 요일별 투숙 건수 및 평균 ADR
+2026-03-01 15:13:30,902 - DataPipeline - INFO -   월요일: 투숙 1건, 평균 ADR 120,000원
+2026-03-01 15:13:30,902 - DataPipeline - INFO -   화요일: 투숙 0건, 평균 ADR 0원
+2026-03-01 15:13:30,903 - DataPipeline - INFO -   수요일: 투숙 0건, 평균 ADR 0원
+2026-03-01 15:13:30,903 - DataPipeline - INFO -   목요일: 투숙 0건, 평균 ADR 0원
+2026-03-01 15:13:30,904 - DataPipeline - INFO -   금요일: 투숙 0건, 평균 ADR 0원
+2026-03-01 15:13:30,904 - DataPipeline - INFO -   토요일: 투숙 2건, 평균 ADR 142,500원
+2026-03-01 15:13:30,904 - DataPipeline - INFO -   일요일: 투숙 0건, 평균 ADR 0원
+2026-03-01 15:13:30,904 - DataPipeline - INFO - [시계열] 월별 총 매출액 및 평균 예약률(OCC) 트렌드
+2026-03-01 15:13:30,915 - DataPipeline - INFO -   2024-01: 매출액 205,000원, 예약건수 2건, OCC 0.1%
+2026-03-01 15:13:30,915 - DataPipeline - INFO -   2024-02: 매출액 200,000원, 예약건수 1건, OCC 0.0%
+2026-03-01 15:13:30,915 - DataPipeline - INFO - [객실 타입 분석] 타입별 예약 빈도
+2026-03-01 15:13:30,915 - DataPipeline - INFO -   FTW: 1건
+2026-03-01 15:13:30,915 - DataPipeline - INFO -   STW: 1건
+2026-03-01 15:13:30,916 - DataPipeline - INFO -   FDT: 1건
+2026-03-01 15:13:30,916 - DataPipeline - INFO - ============================================================
+2026-03-01 15:13:30,916 - DataPipeline - INFO - 호텔 분석 데이터 적재 시작. 테이블: hotel_analytics
+2026-03-01 15:13:30,933 - DataPipeline - INFO - 총 3건 hotel_analytics 적재 완료 → C:\Users\PC\Desktop\Ryun\data\processed\enterprise_dw.db
+2026-03-01 15:13:30,933 - DataPipeline - INFO - 호텔 파이프라인 완료.
+2026-03-01 15:23:50,585 - DataPipeline - INFO - ============================================================
+2026-03-01 15:23:50,585 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 15:23:50,585 - DataPipeline - INFO - ============================================================
+2026-03-01 15:23:50,585 - DataPipeline - INFO - 호텔 예약 리스트 추출: C:\Users\PC\Desktop\Ryun\data\raw\hotel\Reservation List_20260301.xlsx
+2026-03-01 15:23:51,086 - DataPipeline - INFO - 추출 완료! 총 1140건 로드.
+2026-03-01 15:23:51,087 - DataPipeline - INFO - 개인정보 컬럼 즉시 삭제: ['Guest Name', 'E-Mail', 'Mobile']
+2026-03-01 15:23:51,087 - DataPipeline - INFO - 호텔 예약 데이터 변환(Transform)을 시작합니다...
+2026-03-01 15:23:51,096 - DataPipeline - INFO - 마켓코드 GRP/MICE 제거: 0건
+2026-03-01 15:23:51,098 - DataPipeline - INFO - 실객실료 0원 행 제거: 185건
+2026-03-01 15:23:51,100 - DataPipeline - INFO - 호텔 변환 완료! 총 955건
+2026-03-01 15:23:51,101 - DataPipeline - INFO - ============================================================
+2026-03-01 15:23:51,101 - DataPipeline - INFO - 호텔 데이터 분석 리포트
+2026-03-01 15:23:51,101 - DataPipeline - INFO - ============================================================
+2026-03-01 15:23:51,101 - DataPipeline - INFO - [OTA 분석] 예약경로(Source)별 점유율
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   KOR: 836건 (87.5%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   SGP: 33건 (3.5%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   GBR: 19건 (2.0%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   TWN: 12건 (1.3%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   USA: 12건 (1.3%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   HKG: 6건 (0.6%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   JPN: 5건 (0.5%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   AUS: 4건 (0.4%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   DEU: 4건 (0.4%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   MYS: 3건 (0.3%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   CHN: 3건 (0.3%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   PHL: 2건 (0.2%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   BRA: 2건 (0.2%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   IND: 2건 (0.2%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   THA: 2건 (0.2%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   DOM: 1건 (0.1%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   NOR: 1건 (0.1%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   RUS: 1건 (0.1%)
+2026-03-01 15:23:51,102 - DataPipeline - INFO -   DNK: 1건 (0.1%)
+2026-03-01 15:23:51,103 - DataPipeline - INFO -   LKA: 1건 (0.1%)
+2026-03-01 15:23:51,103 - DataPipeline - INFO -   FRA: 1건 (0.1%)
+2026-03-01 15:23:51,103 - DataPipeline - INFO -   MEX: 1건 (0.1%)
+2026-03-01 15:23:51,103 - DataPipeline - INFO -   CAN: 1건 (0.1%)
+2026-03-01 15:23:51,103 - DataPipeline - INFO -   OTH: 1건 (0.1%)
+2026-03-01 15:23:51,103 - DataPipeline - INFO -   : 1건 (0.1%)
+2026-03-01 15:23:51,103 - DataPipeline - INFO - [시계열] 입실일 기준 요일별 투숙 건수 및 평균 ADR
+2026-03-01 15:23:51,109 - DataPipeline - INFO -   월요일: 투숙 64건, 평균 ADR 178,952원
+2026-03-01 15:23:51,111 - DataPipeline - INFO -   화요일: 투숙 86건, 평균 ADR 122,853원
+2026-03-01 15:23:51,113 - DataPipeline - INFO -   수요일: 투숙 101건, 평균 ADR 146,103원
+2026-03-01 15:23:51,115 - DataPipeline - INFO -   목요일: 투숙 128건, 평균 ADR 173,595원
+2026-03-01 15:23:51,116 - DataPipeline - INFO -   금요일: 투숙 245건, 평균 ADR 187,033원
+2026-03-01 15:23:51,118 - DataPipeline - INFO -   토요일: 투숙 195건, 평균 ADR 128,530원
+2026-03-01 15:23:51,120 - DataPipeline - INFO -   일요일: 투숙 135건, 평균 ADR 131,812원
+2026-03-01 15:23:51,120 - DataPipeline - INFO - [시계열] 월별 총 매출액 및 평균 예약률(OCC) 트렌드
+2026-03-01 15:23:51,149 - DataPipeline - INFO -   2026-03: 매출액 61,016,421원, 예약건수 506건, OCC 16.8%
+2026-03-01 15:23:51,150 - DataPipeline - INFO -   2026-04: 매출액 31,320,699원, 예약건수 186건, OCC 6.4%
+2026-03-01 15:23:51,150 - DataPipeline - INFO -   2026-05: 매출액 31,537,603원, 예약건수 183건, OCC 6.1%
+2026-03-01 15:23:51,151 - DataPipeline - INFO -   2026-06: 매출액 18,982,512원, 예약건수 57건, OCC 2.0%
+2026-03-01 15:23:51,151 - DataPipeline - INFO -   2026-07: 매출액 1,902,085원, 예약건수 10건, OCC 0.3%
+2026-03-01 15:23:51,151 - DataPipeline - INFO -   2026-08: 매출액 2,916,451원, 예약건수 12건, OCC 0.4%
+2026-03-01 15:23:51,151 - DataPipeline - INFO - [객실 타입 분석] 타입별 예약 빈도
+2026-03-01 15:23:51,152 - DataPipeline - INFO -   STW: 386건
+2026-03-01 15:23:51,152 - DataPipeline - INFO -   FTW: 327건
+2026-03-01 15:23:51,152 - DataPipeline - INFO -   DDB: 123건
+2026-03-01 15:23:51,152 - DataPipeline - INFO -   TRP: 69건
+2026-03-01 15:23:51,152 - DataPipeline - INFO -   FDT: 48건
+2026-03-01 15:23:51,152 - DataPipeline - INFO -   ASS: 1건
+2026-03-01 15:23:51,152 - DataPipeline - INFO -   1139: 1건
+2026-03-01 15:23:51,152 - DataPipeline - INFO - ============================================================
+2026-03-01 15:23:51,153 - DataPipeline - INFO - 호텔 분석 데이터 적재 시작. 테이블: hotel_analytics
+2026-03-01 15:23:51,197 - DataPipeline - INFO - 총 955건 hotel_analytics 적재 완료 → C:\Users\PC\Desktop\Ryun\data\processed\enterprise_dw.db
+2026-03-01 15:23:51,197 - DataPipeline - INFO - 호텔 파이프라인 완료.
+2026-03-01 15:36:20,147 - DataPipeline - INFO - ============================================================
+2026-03-01 15:36:20,147 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 15:36:20,147 - DataPipeline - INFO - ============================================================
+2026-03-01 15:36:20,147 - DataPipeline - INFO - 호텔 예약 리스트 추출: C:\Users\PC\Desktop\Ryun\data\raw\hotel\Reservation List_20260301.xlsx
+2026-03-01 15:36:20,618 - DataPipeline - INFO - 추출 완료! 총 1140건 로드.
+2026-03-01 15:36:20,619 - DataPipeline - INFO - 개인정보 컬럼 즉시 삭제: ['Guest Name', 'E-Mail', 'Mobile']
+2026-03-01 15:36:20,622 - DataPipeline - INFO - 핵심 데이터만 유지(6컬럼): ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)']
+2026-03-01 15:36:20,622 - DataPipeline - INFO - 호텔 예약 데이터 변환(Transform)을 시작합니다...
+2026-03-01 15:36:20,625 - DataPipeline - INFO - 마켓코드 GRP/MICE 제거: 0건
+2026-03-01 15:36:20,626 - DataPipeline - INFO - 객실료 0원 이하 행 제거: 185건
+2026-03-01 15:36:20,632 - DataPipeline - INFO - 퇴실일<입실일 오류 행 제거: 0건
+2026-03-01 15:36:20,636 - DataPipeline - INFO - 호텔 변환 완료! 컬럼: ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)', '요일', '월'], 총 955건
+2026-03-01 15:36:20,636 - DataPipeline - INFO - ============================================================
+2026-03-01 15:36:20,637 - DataPipeline - INFO - 호텔 데이터 분석 리포트
+2026-03-01 15:36:20,637 - DataPipeline - INFO - ============================================================
+2026-03-01 15:36:20,637 - DataPipeline - INFO - [OTA 분석] 예약경로(Source)별 점유율
+2026-03-01 15:36:20,637 - DataPipeline - INFO -   KOR: 836건 (87.5%)
+2026-03-01 15:36:20,638 - DataPipeline - INFO -   SGP: 33건 (3.5%)
+2026-03-01 15:36:20,638 - DataPipeline - INFO -   GBR: 19건 (2.0%)
+2026-03-01 15:36:20,638 - DataPipeline - INFO -   TWN: 12건 (1.3%)
+2026-03-01 15:36:20,638 - DataPipeline - INFO -   USA: 12건 (1.3%)
+2026-03-01 15:36:20,638 - DataPipeline - INFO -   HKG: 6건 (0.6%)
+2026-03-01 15:36:20,638 - DataPipeline - INFO -   JPN: 5건 (0.5%)
+2026-03-01 15:36:20,638 - DataPipeline - INFO -   AUS: 4건 (0.4%)
+2026-03-01 15:36:20,638 - DataPipeline - INFO -   DEU: 4건 (0.4%)
+2026-03-01 15:36:20,638 - DataPipeline - INFO -   MYS: 3건 (0.3%)
+2026-03-01 15:36:20,638 - DataPipeline - INFO -   CHN: 3건 (0.3%)
+2026-03-01 15:36:20,638 - DataPipeline - INFO -   PHL: 2건 (0.2%)
+2026-03-01 15:36:20,638 - DataPipeline - INFO -   BRA: 2건 (0.2%)
+2026-03-01 15:36:20,638 - DataPipeline - INFO -   IND: 2건 (0.2%)
+2026-03-01 15:36:20,639 - DataPipeline - INFO -   THA: 2건 (0.2%)
+2026-03-01 15:36:20,639 - DataPipeline - INFO -   DOM: 1건 (0.1%)
+2026-03-01 15:36:20,639 - DataPipeline - INFO -   NOR: 1건 (0.1%)
+2026-03-01 15:36:20,639 - DataPipeline - INFO -   RUS: 1건 (0.1%)
+2026-03-01 15:36:20,639 - DataPipeline - INFO -   DNK: 1건 (0.1%)
+2026-03-01 15:36:20,639 - DataPipeline - INFO -   LKA: 1건 (0.1%)
+2026-03-01 15:36:20,639 - DataPipeline - INFO -   FRA: 1건 (0.1%)
+2026-03-01 15:36:20,639 - DataPipeline - INFO -   MEX: 1건 (0.1%)
+2026-03-01 15:36:20,639 - DataPipeline - INFO -   CAN: 1건 (0.1%)
+2026-03-01 15:36:20,639 - DataPipeline - INFO -   OTH: 1건 (0.1%)
+2026-03-01 15:36:20,639 - DataPipeline - INFO -   : 1건 (0.1%)
+2026-03-01 15:36:20,639 - DataPipeline - INFO - [시계열] 입실일 기준 요일별 투숙 건수 및 평균 ADR
+2026-03-01 15:36:20,647 - DataPipeline - INFO -   월요일: 투숙 64건, 평균 ADR 178,952원
+2026-03-01 15:36:20,648 - DataPipeline - INFO -   화요일: 투숙 86건, 평균 ADR 122,853원
+2026-03-01 15:36:20,648 - DataPipeline - INFO -   수요일: 투숙 101건, 평균 ADR 146,103원
+2026-03-01 15:36:20,649 - DataPipeline - INFO -   목요일: 투숙 128건, 평균 ADR 173,595원
+2026-03-01 15:36:20,649 - DataPipeline - INFO -   금요일: 투숙 245건, 평균 ADR 187,033원
+2026-03-01 15:36:20,650 - DataPipeline - INFO -   토요일: 투숙 195건, 평균 ADR 128,530원
+2026-03-01 15:36:20,650 - DataPipeline - INFO -   일요일: 투숙 135건, 평균 ADR 131,812원
+2026-03-01 15:36:20,651 - DataPipeline - INFO - [시계열] 월별 총 매출액 및 평균 예약률(OCC) 트렌드
+2026-03-01 15:36:20,657 - DataPipeline - INFO -   2026-03: 매출액 61,016,421원, 예약건수 506건, OCC 16.8%
+2026-03-01 15:36:20,658 - DataPipeline - INFO -   2026-04: 매출액 31,320,699원, 예약건수 186건, OCC 6.4%
+2026-03-01 15:36:20,658 - DataPipeline - INFO -   2026-05: 매출액 31,537,603원, 예약건수 183건, OCC 6.1%
+2026-03-01 15:36:20,658 - DataPipeline - INFO -   2026-06: 매출액 18,982,512원, 예약건수 57건, OCC 2.0%
+2026-03-01 15:36:20,658 - DataPipeline - INFO -   2026-07: 매출액 1,902,085원, 예약건수 10건, OCC 0.3%
+2026-03-01 15:36:20,658 - DataPipeline - INFO -   2026-08: 매출액 2,916,451원, 예약건수 12건, OCC 0.4%
+2026-03-01 15:36:20,658 - DataPipeline - INFO - [객실 타입 분석] 타입별 예약 빈도
+2026-03-01 15:36:20,660 - DataPipeline - INFO -   STW: 386건
+2026-03-01 15:36:20,660 - DataPipeline - INFO -   FTW: 327건
+2026-03-01 15:36:20,660 - DataPipeline - INFO -   DDB: 123건
+2026-03-01 15:36:20,660 - DataPipeline - INFO -   TRP: 69건
+2026-03-01 15:36:20,660 - DataPipeline - INFO -   FDT: 48건
+2026-03-01 15:36:20,660 - DataPipeline - INFO -   ASS: 1건
+2026-03-01 15:36:20,660 - DataPipeline - INFO -   1139: 1건
+2026-03-01 15:36:20,660 - DataPipeline - INFO - ============================================================
+2026-03-01 15:36:20,661 - DataPipeline - INFO - 리포트 파일 저장: C:\Users\PC\Desktop\Ryun\data\processed\hotel_report_20260301_153620.txt
+2026-03-01 15:36:20,661 - DataPipeline - INFO - 호텔 분석 데이터 적재 시작. 테이블: hotel_analytics
+2026-03-01 15:36:20,683 - DataPipeline - INFO - 총 955건 hotel_analytics 적재 완료 → C:\Users\PC\Desktop\Ryun\data\processed\enterprise_dw.db
+2026-03-01 15:36:20,683 - DataPipeline - INFO - 호텔 파이프라인 완료.
+2026-03-01 19:11:20,804 - DataPipeline - INFO - ============================================================
+2026-03-01 19:11:20,805 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 19:11:20,805 - DataPipeline - INFO - ============================================================
+2026-03-01 19:11:20,805 - DataPipeline - INFO - xlsx 병합 대상: 4개 파일
+2026-03-01 19:11:22,393 - DataPipeline - INFO -   Global Guest List_20260301 (1).xlsx: 4978건 로드
+2026-03-01 19:11:23,672 - DataPipeline - INFO -   Global Guest List_20260301 (2).xlsx: 4984건 로드
+2026-03-01 19:11:23,791 - DataPipeline - INFO -   Global Guest List_20260301 (3).xlsx: 247건 로드
+2026-03-01 19:11:24,972 - DataPipeline - INFO -   Global Guest List_20260301.xlsx: 4603건 로드
+2026-03-01 19:11:24,989 - DataPipeline - INFO - 병합 완료: 총 14812건
+2026-03-01 19:11:24,991 - DataPipeline - INFO - 추출 완료! 총 14812건 로드.
+2026-03-01 19:11:24,999 - DataPipeline - INFO - 개인정보 컬럼 즉시 삭제: ['Guest Name', 'E-Mail', 'Mobile']
+2026-03-01 19:11:25,007 - DataPipeline - INFO - 핵심 데이터만 유지(6컬럼): ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)']
+2026-03-01 19:11:25,007 - DataPipeline - INFO - 호텔 예약 데이터 변환(Transform)을 시작합니다...
+2026-03-01 19:11:25,020 - DataPipeline - INFO - 마켓코드 GRP/MICE 제거: 0건
+2026-03-01 19:11:25,021 - DataPipeline - INFO - 객실료 0원 이하 행 제거: 327건
+2026-03-01 19:11:25,037 - DataPipeline - INFO - 퇴실일<입실일 오류 행 제거: 0건
+2026-03-01 19:11:25,049 - DataPipeline - INFO - 호텔 변환 완료! 컬럼: ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)', '요일', '월'], 총 14485건
+2026-03-01 19:11:25,049 - DataPipeline - INFO - ============================================================
+2026-03-01 19:11:25,049 - DataPipeline - INFO - 호텔 데이터 분석 리포트
+2026-03-01 19:11:25,050 - DataPipeline - INFO - ============================================================
+2026-03-01 19:11:25,050 - DataPipeline - INFO - [OTA 분석] 예약경로(Source)별 점유율
+2026-03-01 19:11:25,057 - DataPipeline - INFO -   KOR: 13614건 (94.0%)
+2026-03-01 19:11:25,057 - DataPipeline - INFO -   CHN: 302건 (2.1%)
+2026-03-01 19:11:25,057 - DataPipeline - INFO -   SGP: 119건 (0.8%)
+2026-03-01 19:11:25,057 - DataPipeline - INFO -   TWN: 97건 (0.7%)
+2026-03-01 19:11:25,057 - DataPipeline - INFO -   USA: 54건 (0.4%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   JPN: 53건 (0.4%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   HKG: 41건 (0.3%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   MYS: 25건 (0.2%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   GBR: 20건 (0.1%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   CAN: 17건 (0.1%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   AUS: 12건 (0.1%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   RUS: 12건 (0.1%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   IND: 8건 (0.1%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   MNG: 8건 (0.1%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   VNM: 8건 (0.1%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   FRA: 7건 (0.0%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   DEU: 6건 (0.0%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   NLD: 6건 (0.0%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   HUN: 5건 (0.0%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   ESP: 5건 (0.0%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   THA: 5건 (0.0%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   ITA: 4건 (0.0%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   : 4건 (0.0%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   IRL: 4건 (0.0%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   SWE: 3건 (0.0%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   POL: 3건 (0.0%)
+2026-03-01 19:11:25,058 - DataPipeline - INFO -   COL: 3건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   NZL: 3건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   IDN: 3건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   ISR: 2건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   CYP: 2건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   GHA: 2건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   DNK: 2건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   MLT: 2건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   CHE: 2건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   CZE: 2건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   ROU: 2건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   UZB: 2건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   ARE: 2건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   BEL: 2건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   KHM: 1건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   NOR: 1건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   PAK: 1건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   MEX: 1건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   ECU: 1건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   EST: 1건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   MAC: 1건 (0.0%)
+2026-03-01 19:11:25,059 - DataPipeline - INFO -   PHL: 1건 (0.0%)
+2026-03-01 19:11:25,060 - DataPipeline - INFO -   FIN: 1건 (0.0%)
+2026-03-01 19:11:25,060 - DataPipeline - INFO -   OTH: 1건 (0.0%)
+2026-03-01 19:11:25,060 - DataPipeline - INFO -   LAO: 1건 (0.0%)
+2026-03-01 19:11:25,060 - DataPipeline - INFO -   KAZ: 1건 (0.0%)
+2026-03-01 19:11:25,060 - DataPipeline - INFO - [시계열] 입실일 기준 요일별 투숙 건수 및 평균 ADR
+2026-03-01 19:11:25,074 - DataPipeline - INFO -   월요일: 투숙 1826건, 평균 ADR 116,611원
+2026-03-01 19:11:25,075 - DataPipeline - INFO -   화요일: 투숙 1711건, 평균 ADR 113,716원
+2026-03-01 19:11:25,076 - DataPipeline - INFO -   수요일: 투숙 1740건, 평균 ADR 128,359원
+2026-03-01 19:11:25,077 - DataPipeline - INFO -   목요일: 투숙 1641건, 평균 ADR 133,532원
+2026-03-01 19:11:25,078 - DataPipeline - INFO -   금요일: 투숙 2679건, 평균 ADR 126,141원
+2026-03-01 19:11:25,078 - DataPipeline - INFO -   토요일: 투숙 2644건, 평균 ADR 116,848원
+2026-03-01 19:11:25,079 - DataPipeline - INFO -   일요일: 투숙 2240건, 평균 ADR 111,816원
+2026-03-01 19:11:25,079 - DataPipeline - INFO - [시계열] 월별 총 매출액 및 평균 예약률(OCC) 트렌드
+2026-03-01 19:11:25,093 - DataPipeline - INFO -   2024-12: 매출액 7,426,680원, 예약건수 31건, OCC 1.0%
+2026-03-01 19:11:25,093 - DataPipeline - INFO -   2025-01: 매출액 166,029,591원, 예약건수 1382건, OCC 46.0%
+2026-03-01 19:11:25,093 - DataPipeline - INFO -   2025-02: 매출액 132,524,803원, 예약건수 1194건, OCC 44.0%
+2026-03-01 19:11:25,093 - DataPipeline - INFO -   2025-03: 매출액 87,012,323원, 예약건수 928건, OCC 30.9%
+2026-03-01 19:11:25,094 - DataPipeline - INFO -   2025-04: 매출액 105,470,775원, 예약건수 947건, OCC 32.5%
+2026-03-01 19:11:25,094 - DataPipeline - INFO -   2025-05: 매출액 115,588,315원, 예약건수 1049건, OCC 34.9%
+2026-03-01 19:11:25,094 - DataPipeline - INFO -   2025-06: 매출액 146,059,664원, 예약건수 1261건, OCC 43.3%
+2026-03-01 19:11:25,094 - DataPipeline - INFO -   2025-07: 매출액 165,424,118원, 예약건수 1274건, OCC 42.4%
+2026-03-01 19:11:25,094 - DataPipeline - INFO -   2025-08: 매출액 180,899,177원, 예약건수 1339건, OCC 44.5%
+2026-03-01 19:11:25,094 - DataPipeline - INFO -   2025-09: 매출액 127,722,064원, 예약건수 1192건, OCC 41.0%
+2026-03-01 19:11:25,094 - DataPipeline - INFO -   2025-10: 매출액 174,739,765원, 예약건수 1150건, OCC 38.2%
+2026-03-01 19:11:25,094 - DataPipeline - INFO -   2025-11: 매출액 149,451,787원, 예약건수 1282건, OCC 44.1%
+2026-03-01 19:11:25,094 - DataPipeline - INFO -   2025-12: 매출액 188,967,498원, 예약건수 1452건, OCC 48.3%
+2026-03-01 19:11:25,095 - DataPipeline - INFO - [객실 타입 분석] 타입별 예약 빈도
+2026-03-01 19:11:25,096 - DataPipeline - INFO -   STW: 5125건
+2026-03-01 19:11:25,096 - DataPipeline - INFO -   FTW: 4922건
+2026-03-01 19:11:25,096 - DataPipeline - INFO -   DDB: 1981건
+2026-03-01 19:11:25,096 - DataPipeline - INFO -   TRP: 1278건
+2026-03-01 19:11:25,096 - DataPipeline - INFO -   FDT: 1149건
+2026-03-01 19:11:25,097 - DataPipeline - INFO -   ASS: 26건
+2026-03-01 19:11:25,097 - DataPipeline - INFO -   4,977: 1건
+2026-03-01 19:11:25,097 - DataPipeline - INFO -   4,983: 1건
+2026-03-01 19:11:25,097 - DataPipeline - INFO -   246: 1건
+2026-03-01 19:11:25,097 - DataPipeline - INFO -   4,602: 1건
+2026-03-01 19:11:25,097 - DataPipeline - INFO - ============================================================
+2026-03-01 19:11:25,098 - DataPipeline - INFO - 리포트 파일 저장: C:\Users\PC\Desktop\Ryun\data\processed\hotel_report_20260301_191125.txt
+2026-03-01 19:11:25,100 - DataPipeline - INFO - 호텔 분석 데이터 적재 시작. 테이블: hotel_analytics
+2026-03-01 19:11:25,168 - DataPipeline - INFO - 총 14485건 hotel_analytics 적재 완료 → C:\Users\PC\Desktop\Ryun\data\processed\enterprise_dw.db
+2026-03-01 19:11:25,169 - DataPipeline - INFO - 호텔 파이프라인 완료.
+2026-03-01 19:14:50,319 - DataPipeline - INFO - ============================================================
+2026-03-01 19:14:50,319 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 19:14:50,319 - DataPipeline - INFO - ============================================================
+2026-03-01 19:14:50,320 - DataPipeline - INFO - xlsx 병합 대상: 4개 파일
+2026-03-01 19:14:51,700 - DataPipeline - INFO -   Global Guest List_20260301 (1).xlsx: 4978건 로드
+2026-03-01 19:14:52,953 - DataPipeline - INFO -   Global Guest List_20260301 (2).xlsx: 4984건 로드
+2026-03-01 19:14:53,067 - DataPipeline - INFO -   Global Guest List_20260301 (3).xlsx: 247건 로드
+2026-03-01 19:14:54,228 - DataPipeline - INFO -   Global Guest List_20260301.xlsx: 4603건 로드
+2026-03-01 19:14:54,239 - DataPipeline - INFO - 병합 완료: 총 14812건
+2026-03-01 19:14:54,242 - DataPipeline - INFO - 추출 완료! 총 14812건 로드.
+2026-03-01 19:14:54,253 - DataPipeline - INFO - 개인정보 컬럼 즉시 삭제: ['Guest Name', 'E-Mail', 'Mobile']
+2026-03-01 19:14:54,260 - DataPipeline - INFO - 핵심 데이터만 유지(6컬럼): ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)']
+2026-03-01 19:14:55,637 - DataPipeline - INFO - 육안 확인용 저장: C:\Users\PC\Desktop\Ryun\data\processed\merged_hotel_확인용_20260301_191454.xlsx
+2026-03-01 19:14:55,637 - DataPipeline - INFO - 호텔 예약 데이터 변환(Transform)을 시작합니다...
+2026-03-01 19:14:55,646 - DataPipeline - INFO - 마켓코드 GRP/MICE 제거: 0건
+2026-03-01 19:14:55,648 - DataPipeline - INFO - 객실료 0원 이하 행 제거: 327건
+2026-03-01 19:14:55,658 - DataPipeline - INFO - 퇴실일<입실일 오류 행 제거: 0건
+2026-03-01 19:14:55,669 - DataPipeline - INFO - 호텔 변환 완료! 컬럼: ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)', '요일', '월'], 총 14485건
+2026-03-01 19:14:57,478 - DataPipeline - INFO - 노이즈 제거 후 확인용 저장: C:\Users\PC\Desktop\Ryun\data\processed\hotel_cleaned_확인용_20260301_191455.xlsx
+2026-03-01 19:14:57,478 - DataPipeline - INFO - ============================================================
+2026-03-01 19:14:57,478 - DataPipeline - INFO - 호텔 데이터 분석 리포트
+2026-03-01 19:14:57,478 - DataPipeline - INFO - ============================================================
+2026-03-01 19:14:57,479 - DataPipeline - INFO - [OTA 분석] 예약경로(Source)별 점유율
+2026-03-01 19:14:57,481 - DataPipeline - INFO -   KOR: 13614건 (94.0%)
+2026-03-01 19:14:57,481 - DataPipeline - INFO -   CHN: 302건 (2.1%)
+2026-03-01 19:14:57,481 - DataPipeline - INFO -   SGP: 119건 (0.8%)
+2026-03-01 19:14:57,481 - DataPipeline - INFO -   TWN: 97건 (0.7%)
+2026-03-01 19:14:57,482 - DataPipeline - INFO -   USA: 54건 (0.4%)
+2026-03-01 19:14:57,482 - DataPipeline - INFO -   JPN: 53건 (0.4%)
+2026-03-01 19:14:57,482 - DataPipeline - INFO -   HKG: 41건 (0.3%)
+2026-03-01 19:14:57,482 - DataPipeline - INFO -   MYS: 25건 (0.2%)
+2026-03-01 19:14:57,482 - DataPipeline - INFO -   GBR: 20건 (0.1%)
+2026-03-01 19:14:57,483 - DataPipeline - INFO -   CAN: 17건 (0.1%)
+2026-03-01 19:14:57,483 - DataPipeline - INFO -   AUS: 12건 (0.1%)
+2026-03-01 19:14:57,483 - DataPipeline - INFO -   RUS: 12건 (0.1%)
+2026-03-01 19:14:57,483 - DataPipeline - INFO -   IND: 8건 (0.1%)
+2026-03-01 19:14:57,483 - DataPipeline - INFO -   MNG: 8건 (0.1%)
+2026-03-01 19:14:57,483 - DataPipeline - INFO -   VNM: 8건 (0.1%)
+2026-03-01 19:14:57,484 - DataPipeline - INFO -   FRA: 7건 (0.0%)
+2026-03-01 19:14:57,484 - DataPipeline - INFO -   DEU: 6건 (0.0%)
+2026-03-01 19:14:57,484 - DataPipeline - INFO -   NLD: 6건 (0.0%)
+2026-03-01 19:14:57,484 - DataPipeline - INFO -   HUN: 5건 (0.0%)
+2026-03-01 19:14:57,484 - DataPipeline - INFO -   ESP: 5건 (0.0%)
+2026-03-01 19:14:57,484 - DataPipeline - INFO -   THA: 5건 (0.0%)
+2026-03-01 19:14:57,484 - DataPipeline - INFO -   ITA: 4건 (0.0%)
+2026-03-01 19:14:57,484 - DataPipeline - INFO -   : 4건 (0.0%)
+2026-03-01 19:14:57,485 - DataPipeline - INFO -   IRL: 4건 (0.0%)
+2026-03-01 19:14:57,485 - DataPipeline - INFO -   SWE: 3건 (0.0%)
+2026-03-01 19:14:57,485 - DataPipeline - INFO -   POL: 3건 (0.0%)
+2026-03-01 19:14:57,485 - DataPipeline - INFO -   COL: 3건 (0.0%)
+2026-03-01 19:14:57,485 - DataPipeline - INFO -   NZL: 3건 (0.0%)
+2026-03-01 19:14:57,485 - DataPipeline - INFO -   IDN: 3건 (0.0%)
+2026-03-01 19:14:57,485 - DataPipeline - INFO -   ISR: 2건 (0.0%)
+2026-03-01 19:14:57,486 - DataPipeline - INFO -   CYP: 2건 (0.0%)
+2026-03-01 19:14:57,486 - DataPipeline - INFO -   GHA: 2건 (0.0%)
+2026-03-01 19:14:57,486 - DataPipeline - INFO -   DNK: 2건 (0.0%)
+2026-03-01 19:14:57,486 - DataPipeline - INFO -   MLT: 2건 (0.0%)
+2026-03-01 19:14:57,486 - DataPipeline - INFO -   CHE: 2건 (0.0%)
+2026-03-01 19:14:57,486 - DataPipeline - INFO -   CZE: 2건 (0.0%)
+2026-03-01 19:14:57,486 - DataPipeline - INFO -   ROU: 2건 (0.0%)
+2026-03-01 19:14:57,486 - DataPipeline - INFO -   UZB: 2건 (0.0%)
+2026-03-01 19:14:57,487 - DataPipeline - INFO -   ARE: 2건 (0.0%)
+2026-03-01 19:14:57,487 - DataPipeline - INFO -   BEL: 2건 (0.0%)
+2026-03-01 19:14:57,487 - DataPipeline - INFO -   KHM: 1건 (0.0%)
+2026-03-01 19:14:57,487 - DataPipeline - INFO -   NOR: 1건 (0.0%)
+2026-03-01 19:14:57,487 - DataPipeline - INFO -   PAK: 1건 (0.0%)
+2026-03-01 19:14:57,487 - DataPipeline - INFO -   MEX: 1건 (0.0%)
+2026-03-01 19:14:57,487 - DataPipeline - INFO -   ECU: 1건 (0.0%)
+2026-03-01 19:14:57,487 - DataPipeline - INFO -   EST: 1건 (0.0%)
+2026-03-01 19:14:57,487 - DataPipeline - INFO -   MAC: 1건 (0.0%)
+2026-03-01 19:14:57,488 - DataPipeline - INFO -   PHL: 1건 (0.0%)
+2026-03-01 19:14:57,488 - DataPipeline - INFO -   FIN: 1건 (0.0%)
+2026-03-01 19:14:57,488 - DataPipeline - INFO -   OTH: 1건 (0.0%)
+2026-03-01 19:14:57,488 - DataPipeline - INFO -   LAO: 1건 (0.0%)
+2026-03-01 19:14:57,488 - DataPipeline - INFO -   KAZ: 1건 (0.0%)
+2026-03-01 19:14:57,488 - DataPipeline - INFO - [시계열] 입실일 기준 요일별 투숙 건수 및 평균 ADR
+2026-03-01 19:14:57,498 - DataPipeline - INFO -   월요일: 투숙 1826건, 평균 ADR 116,611원
+2026-03-01 19:14:57,499 - DataPipeline - INFO -   화요일: 투숙 1711건, 평균 ADR 113,716원
+2026-03-01 19:14:57,500 - DataPipeline - INFO -   수요일: 투숙 1740건, 평균 ADR 128,359원
+2026-03-01 19:14:57,502 - DataPipeline - INFO -   목요일: 투숙 1641건, 평균 ADR 133,532원
+2026-03-01 19:14:57,504 - DataPipeline - INFO -   금요일: 투숙 2679건, 평균 ADR 126,141원
+2026-03-01 19:14:57,508 - DataPipeline - INFO -   토요일: 투숙 2644건, 평균 ADR 116,848원
+2026-03-01 19:14:57,509 - DataPipeline - INFO -   일요일: 투숙 2240건, 평균 ADR 111,816원
+2026-03-01 19:14:57,509 - DataPipeline - INFO - [시계열] 월별 총 매출액 및 평균 예약률(OCC) 트렌드
+2026-03-01 19:14:57,518 - DataPipeline - INFO -   2024-12: 매출액 7,426,680원, 예약건수 31건, OCC 1.0%
+2026-03-01 19:14:57,518 - DataPipeline - INFO -   2025-01: 매출액 166,029,591원, 예약건수 1382건, OCC 46.0%
+2026-03-01 19:14:57,519 - DataPipeline - INFO -   2025-02: 매출액 132,524,803원, 예약건수 1194건, OCC 44.0%
+2026-03-01 19:14:57,519 - DataPipeline - INFO -   2025-03: 매출액 87,012,323원, 예약건수 928건, OCC 30.9%
+2026-03-01 19:14:57,519 - DataPipeline - INFO -   2025-04: 매출액 105,470,775원, 예약건수 947건, OCC 32.5%
+2026-03-01 19:14:57,520 - DataPipeline - INFO -   2025-05: 매출액 115,588,315원, 예약건수 1049건, OCC 34.9%
+2026-03-01 19:14:57,520 - DataPipeline - INFO -   2025-06: 매출액 146,059,664원, 예약건수 1261건, OCC 43.3%
+2026-03-01 19:14:57,521 - DataPipeline - INFO -   2025-07: 매출액 165,424,118원, 예약건수 1274건, OCC 42.4%
+2026-03-01 19:14:57,521 - DataPipeline - INFO -   2025-08: 매출액 180,899,177원, 예약건수 1339건, OCC 44.5%
+2026-03-01 19:14:57,521 - DataPipeline - INFO -   2025-09: 매출액 127,722,064원, 예약건수 1192건, OCC 41.0%
+2026-03-01 19:14:57,522 - DataPipeline - INFO -   2025-10: 매출액 174,739,765원, 예약건수 1150건, OCC 38.2%
+2026-03-01 19:14:57,522 - DataPipeline - INFO -   2025-11: 매출액 149,451,787원, 예약건수 1282건, OCC 44.1%
+2026-03-01 19:14:57,522 - DataPipeline - INFO -   2025-12: 매출액 188,967,498원, 예약건수 1452건, OCC 48.3%
+2026-03-01 19:14:57,522 - DataPipeline - INFO - [객실 타입 분석] 타입별 예약 빈도
+2026-03-01 19:14:57,524 - DataPipeline - INFO -   STW: 5125건
+2026-03-01 19:14:57,524 - DataPipeline - INFO -   FTW: 4922건
+2026-03-01 19:14:57,525 - DataPipeline - INFO -   DDB: 1981건
+2026-03-01 19:14:57,525 - DataPipeline - INFO -   TRP: 1278건
+2026-03-01 19:14:57,525 - DataPipeline - INFO -   FDT: 1149건
+2026-03-01 19:14:57,525 - DataPipeline - INFO -   ASS: 26건
+2026-03-01 19:14:57,525 - DataPipeline - INFO -   4,977: 1건
+2026-03-01 19:14:57,525 - DataPipeline - INFO -   4,983: 1건
+2026-03-01 19:14:57,525 - DataPipeline - INFO -   246: 1건
+2026-03-01 19:14:57,526 - DataPipeline - INFO -   4,602: 1건
+2026-03-01 19:14:57,526 - DataPipeline - INFO - ============================================================
+2026-03-01 19:14:57,527 - DataPipeline - INFO - 리포트 파일 저장: C:\Users\PC\Desktop\Ryun\data\processed\hotel_report_20260301_191457.txt
+2026-03-01 19:14:57,529 - DataPipeline - INFO - 호텔 분석 데이터 적재 시작. 테이블: hotel_analytics
+2026-03-01 19:14:57,580 - DataPipeline - INFO - 총 14485건 hotel_analytics 적재 완료 → C:\Users\PC\Desktop\Ryun\data\processed\enterprise_dw.db
+2026-03-01 19:14:57,580 - DataPipeline - INFO - 호텔 파이프라인 완료.
+2026-03-01 19:16:52,282 - DataPipeline - INFO - ============================================================
+2026-03-01 19:16:52,282 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 19:16:52,282 - DataPipeline - INFO - ============================================================
+2026-03-01 19:16:52,283 - DataPipeline - INFO - xlsx 병합 대상: 4개 파일
+2026-03-01 19:16:53,741 - DataPipeline - INFO -   Global Guest List_20260301 (1).xlsx: 4978건 로드
+2026-03-01 19:16:55,033 - DataPipeline - INFO -   Global Guest List_20260301 (2).xlsx: 4984건 로드
+2026-03-01 19:16:55,143 - DataPipeline - INFO -   Global Guest List_20260301 (3).xlsx: 247건 로드
+2026-03-01 19:16:56,277 - DataPipeline - INFO -   Global Guest List_20260301.xlsx: 4603건 로드
+2026-03-01 19:16:56,292 - DataPipeline - INFO - 병합 완료: 총 14812건
+2026-03-01 19:16:56,295 - DataPipeline - INFO - 추출 완료! 총 14812건 로드.
+2026-03-01 19:16:56,307 - DataPipeline - INFO - 개인정보 컬럼 즉시 삭제: ['Guest Name', 'E-Mail', 'Mobile']
+2026-03-01 19:17:04,131 - DataPipeline - INFO - 육안 확인용 저장: C:\Users\PC\Desktop\Ryun\data\processed\merged_hotel_확인용_20260301_191656.xlsx
+2026-03-01 19:17:04,137 - DataPipeline - INFO - 핵심 데이터만 유지(6컬럼): ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)']
+2026-03-01 19:17:04,137 - DataPipeline - INFO - 호텔 예약 데이터 변환(Transform)을 시작합니다...
+2026-03-01 19:17:04,146 - DataPipeline - INFO - 마켓코드 GRP/MICE 제거: 0건
+2026-03-01 19:17:04,148 - DataPipeline - INFO - 객실료 0원 이하 행 제거: 327건
+2026-03-01 19:17:04,158 - DataPipeline - INFO - 퇴실일<입실일 오류 행 제거: 0건
+2026-03-01 19:17:04,167 - DataPipeline - INFO - 호텔 변환 완료! 컬럼: ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)', '요일', '월'], 총 14485건
+2026-03-01 19:17:06,083 - DataPipeline - INFO - 노이즈 제거 후 확인용 저장: C:\Users\PC\Desktop\Ryun\data\processed\hotel_cleaned_확인용_20260301_191704.xlsx
+2026-03-01 19:17:06,083 - DataPipeline - INFO - ============================================================
+2026-03-01 19:17:06,083 - DataPipeline - INFO - 호텔 데이터 분석 리포트
+2026-03-01 19:17:06,083 - DataPipeline - INFO - ============================================================
+2026-03-01 19:17:06,084 - DataPipeline - INFO - [OTA 분석] 예약경로(Source)별 점유율
+2026-03-01 19:17:06,086 - DataPipeline - INFO -   KOR: 13614건 (94.0%)
+2026-03-01 19:17:06,086 - DataPipeline - INFO -   CHN: 302건 (2.1%)
+2026-03-01 19:17:06,086 - DataPipeline - INFO -   SGP: 119건 (0.8%)
+2026-03-01 19:17:06,086 - DataPipeline - INFO -   TWN: 97건 (0.7%)
+2026-03-01 19:17:06,087 - DataPipeline - INFO -   USA: 54건 (0.4%)
+2026-03-01 19:17:06,087 - DataPipeline - INFO -   JPN: 53건 (0.4%)
+2026-03-01 19:17:06,087 - DataPipeline - INFO -   HKG: 41건 (0.3%)
+2026-03-01 19:17:06,087 - DataPipeline - INFO -   MYS: 25건 (0.2%)
+2026-03-01 19:17:06,087 - DataPipeline - INFO -   GBR: 20건 (0.1%)
+2026-03-01 19:17:06,088 - DataPipeline - INFO -   CAN: 17건 (0.1%)
+2026-03-01 19:17:06,088 - DataPipeline - INFO -   AUS: 12건 (0.1%)
+2026-03-01 19:17:06,088 - DataPipeline - INFO -   RUS: 12건 (0.1%)
+2026-03-01 19:17:06,088 - DataPipeline - INFO -   IND: 8건 (0.1%)
+2026-03-01 19:17:06,088 - DataPipeline - INFO -   MNG: 8건 (0.1%)
+2026-03-01 19:17:06,088 - DataPipeline - INFO -   VNM: 8건 (0.1%)
+2026-03-01 19:17:06,089 - DataPipeline - INFO -   FRA: 7건 (0.0%)
+2026-03-01 19:17:06,089 - DataPipeline - INFO -   DEU: 6건 (0.0%)
+2026-03-01 19:17:06,089 - DataPipeline - INFO -   NLD: 6건 (0.0%)
+2026-03-01 19:17:06,089 - DataPipeline - INFO -   HUN: 5건 (0.0%)
+2026-03-01 19:17:06,089 - DataPipeline - INFO -   ESP: 5건 (0.0%)
+2026-03-01 19:17:06,090 - DataPipeline - INFO -   THA: 5건 (0.0%)
+2026-03-01 19:17:06,090 - DataPipeline - INFO -   ITA: 4건 (0.0%)
+2026-03-01 19:17:06,090 - DataPipeline - INFO -   : 4건 (0.0%)
+2026-03-01 19:17:06,090 - DataPipeline - INFO -   IRL: 4건 (0.0%)
+2026-03-01 19:17:06,090 - DataPipeline - INFO -   SWE: 3건 (0.0%)
+2026-03-01 19:17:06,090 - DataPipeline - INFO -   POL: 3건 (0.0%)
+2026-03-01 19:17:06,091 - DataPipeline - INFO -   COL: 3건 (0.0%)
+2026-03-01 19:17:06,091 - DataPipeline - INFO -   NZL: 3건 (0.0%)
+2026-03-01 19:17:06,091 - DataPipeline - INFO -   IDN: 3건 (0.0%)
+2026-03-01 19:17:06,091 - DataPipeline - INFO -   ISR: 2건 (0.0%)
+2026-03-01 19:17:06,091 - DataPipeline - INFO -   CYP: 2건 (0.0%)
+2026-03-01 19:17:06,091 - DataPipeline - INFO -   GHA: 2건 (0.0%)
+2026-03-01 19:17:06,091 - DataPipeline - INFO -   DNK: 2건 (0.0%)
+2026-03-01 19:17:06,092 - DataPipeline - INFO -   MLT: 2건 (0.0%)
+2026-03-01 19:17:06,092 - DataPipeline - INFO -   CHE: 2건 (0.0%)
+2026-03-01 19:17:06,092 - DataPipeline - INFO -   CZE: 2건 (0.0%)
+2026-03-01 19:17:06,092 - DataPipeline - INFO -   ROU: 2건 (0.0%)
+2026-03-01 19:17:06,092 - DataPipeline - INFO -   UZB: 2건 (0.0%)
+2026-03-01 19:17:06,092 - DataPipeline - INFO -   ARE: 2건 (0.0%)
+2026-03-01 19:17:06,092 - DataPipeline - INFO -   BEL: 2건 (0.0%)
+2026-03-01 19:17:06,092 - DataPipeline - INFO -   KHM: 1건 (0.0%)
+2026-03-01 19:17:06,092 - DataPipeline - INFO -   NOR: 1건 (0.0%)
+2026-03-01 19:17:06,093 - DataPipeline - INFO -   PAK: 1건 (0.0%)
+2026-03-01 19:17:06,093 - DataPipeline - INFO -   MEX: 1건 (0.0%)
+2026-03-01 19:17:06,093 - DataPipeline - INFO -   ECU: 1건 (0.0%)
+2026-03-01 19:17:06,093 - DataPipeline - INFO -   EST: 1건 (0.0%)
+2026-03-01 19:17:06,093 - DataPipeline - INFO -   MAC: 1건 (0.0%)
+2026-03-01 19:17:06,093 - DataPipeline - INFO -   PHL: 1건 (0.0%)
+2026-03-01 19:17:06,093 - DataPipeline - INFO -   FIN: 1건 (0.0%)
+2026-03-01 19:17:06,093 - DataPipeline - INFO -   OTH: 1건 (0.0%)
+2026-03-01 19:17:06,093 - DataPipeline - INFO -   LAO: 1건 (0.0%)
+2026-03-01 19:17:06,094 - DataPipeline - INFO -   KAZ: 1건 (0.0%)
+2026-03-01 19:17:06,094 - DataPipeline - INFO - [시계열] 입실일 기준 요일별 투숙 건수 및 평균 ADR
+2026-03-01 19:17:06,104 - DataPipeline - INFO -   월요일: 투숙 1826건, 평균 ADR 116,611원
+2026-03-01 19:17:06,106 - DataPipeline - INFO -   화요일: 투숙 1711건, 평균 ADR 113,716원
+2026-03-01 19:17:06,107 - DataPipeline - INFO -   수요일: 투숙 1740건, 평균 ADR 128,359원
+2026-03-01 19:17:06,108 - DataPipeline - INFO -   목요일: 투숙 1641건, 평균 ADR 133,532원
+2026-03-01 19:17:06,109 - DataPipeline - INFO -   금요일: 투숙 2679건, 평균 ADR 126,141원
+2026-03-01 19:17:06,111 - DataPipeline - INFO -   토요일: 투숙 2644건, 평균 ADR 116,848원
+2026-03-01 19:17:06,113 - DataPipeline - INFO -   일요일: 투숙 2240건, 평균 ADR 111,816원
+2026-03-01 19:17:06,113 - DataPipeline - INFO - [시계열] 월별 총 매출액 및 평균 예약률(OCC) 트렌드
+2026-03-01 19:17:06,122 - DataPipeline - INFO -   2024-12: 매출액 7,426,680원, 예약건수 31건, OCC 1.0%
+2026-03-01 19:17:06,123 - DataPipeline - INFO -   2025-01: 매출액 166,029,591원, 예약건수 1382건, OCC 46.0%
+2026-03-01 19:17:06,124 - DataPipeline - INFO -   2025-02: 매출액 132,524,803원, 예약건수 1194건, OCC 44.0%
+2026-03-01 19:17:06,124 - DataPipeline - INFO -   2025-03: 매출액 87,012,323원, 예약건수 928건, OCC 30.9%
+2026-03-01 19:17:06,124 - DataPipeline - INFO -   2025-04: 매출액 105,470,775원, 예약건수 947건, OCC 32.5%
+2026-03-01 19:17:06,125 - DataPipeline - INFO -   2025-05: 매출액 115,588,315원, 예약건수 1049건, OCC 34.9%
+2026-03-01 19:17:06,125 - DataPipeline - INFO -   2025-06: 매출액 146,059,664원, 예약건수 1261건, OCC 43.3%
+2026-03-01 19:17:06,125 - DataPipeline - INFO -   2025-07: 매출액 165,424,118원, 예약건수 1274건, OCC 42.4%
+2026-03-01 19:17:06,125 - DataPipeline - INFO -   2025-08: 매출액 180,899,177원, 예약건수 1339건, OCC 44.5%
+2026-03-01 19:17:06,126 - DataPipeline - INFO -   2025-09: 매출액 127,722,064원, 예약건수 1192건, OCC 41.0%
+2026-03-01 19:17:06,126 - DataPipeline - INFO -   2025-10: 매출액 174,739,765원, 예약건수 1150건, OCC 38.2%
+2026-03-01 19:17:06,126 - DataPipeline - INFO -   2025-11: 매출액 149,451,787원, 예약건수 1282건, OCC 44.1%
+2026-03-01 19:17:06,127 - DataPipeline - INFO -   2025-12: 매출액 188,967,498원, 예약건수 1452건, OCC 48.3%
+2026-03-01 19:17:06,127 - DataPipeline - INFO - [객실 타입 분석] 타입별 예약 빈도
+2026-03-01 19:17:06,129 - DataPipeline - INFO -   STW: 5125건
+2026-03-01 19:17:06,129 - DataPipeline - INFO -   FTW: 4922건
+2026-03-01 19:17:06,129 - DataPipeline - INFO -   DDB: 1981건
+2026-03-01 19:17:06,129 - DataPipeline - INFO -   TRP: 1278건
+2026-03-01 19:17:06,130 - DataPipeline - INFO -   FDT: 1149건
+2026-03-01 19:17:06,130 - DataPipeline - INFO -   ASS: 26건
+2026-03-01 19:17:06,130 - DataPipeline - INFO -   4,977: 1건
+2026-03-01 19:17:06,130 - DataPipeline - INFO -   4,983: 1건
+2026-03-01 19:17:06,130 - DataPipeline - INFO -   246: 1건
+2026-03-01 19:17:06,130 - DataPipeline - INFO -   4,602: 1건
+2026-03-01 19:17:06,130 - DataPipeline - INFO - ============================================================
+2026-03-01 19:17:06,132 - DataPipeline - INFO - 리포트 파일 저장: C:\Users\PC\Desktop\Ryun\data\processed\hotel_report_20260301_191706.txt
+2026-03-01 19:17:06,134 - DataPipeline - INFO - 호텔 분석 데이터 적재 시작. 테이블: hotel_analytics
+2026-03-01 19:17:06,182 - DataPipeline - INFO - 총 14485건 hotel_analytics 적재 완료 → C:\Users\PC\Desktop\Ryun\data\processed\enterprise_dw.db
+2026-03-01 19:17:06,183 - DataPipeline - INFO - 호텔 파이프라인 완료.
+2026-03-01 20:00:31,569 - DataPipeline - INFO - ============================================================
+2026-03-01 20:00:31,570 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 20:00:31,570 - DataPipeline - INFO - ============================================================
+2026-03-01 20:00:31,570 - DataPipeline - INFO - xlsx 병합 대상: 4개 파일
+2026-03-01 20:00:33,070 - DataPipeline - INFO -   Global Guest List_20260301 (1).xlsx: 4978건 로드
+2026-03-01 20:00:34,317 - DataPipeline - INFO -   Global Guest List_20260301 (2).xlsx: 4984건 로드
+2026-03-01 20:00:34,421 - DataPipeline - INFO -   Global Guest List_20260301 (3).xlsx: 247건 로드
+2026-03-01 20:00:35,567 - DataPipeline - INFO -   Global Guest List_20260301.xlsx: 4603건 로드
+2026-03-01 20:00:35,581 - DataPipeline - INFO - 병합 완료: 총 14812건
+2026-03-01 20:00:35,584 - DataPipeline - INFO - 추출 완료! 총 14812건 로드.
+2026-03-01 20:00:35,591 - DataPipeline - INFO - 개인정보 컬럼 즉시 삭제: ['Guest Name', 'E-Mail', 'Mobile']
+2026-03-01 20:00:44,075 - DataPipeline - INFO - 육안 확인용 저장: C:\Users\PC\Desktop\Ryun\data\processed\merged_hotel_확인용_20260301_200035.xlsx
+2026-03-01 20:00:44,115 - DataPipeline - WARNING - 대숙청 시 누락 컬럼(무시): ['nat']
+2026-03-01 20:00:44,123 - DataPipeline - INFO - 컬럼 대숙청 완료: ['Sts', 'Rsvn No', 'Arr Date', 'Dep Date', 'Nts', 'Rm Ty', 'Total Amount', 'Ma Ty', 'So Ty', 'Nat']
+2026-03-01 20:00:44,140 - DataPipeline - INFO - Ma Ty GRP/MICE 제거: 0건
+2026-03-01 20:00:44,149 - DataPipeline - INFO - Sts CXL(취소) 제거: 0건
+2026-03-01 20:00:44,157 - DataPipeline - INFO - 객실료 0원 제거: 277건
+2026-03-01 20:00:44,208 - DataPipeline - INFO - 병합·정제 중간 결과 저장: C:\Users\PC\Desktop\Ryun\data\processed\hotel_master_2024.csv
+2026-03-01 20:00:44,208 - DataPipeline - INFO - 총 14535개 행이 남았습니다.
+2026-03-01 20:00:44,214 - DataPipeline - INFO - 파이프라인용 6컬럼: ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)']
+2026-03-01 20:00:44,215 - DataPipeline - INFO - 호텔 예약 데이터 변환(Transform)을 시작합니다...
+2026-03-01 20:00:44,232 - DataPipeline - INFO - 마켓코드 GRP/MICE 제거: 0건
+2026-03-01 20:00:44,241 - DataPipeline - INFO - 객실료 0원 이하 행 제거: 0건
+2026-03-01 20:00:44,258 - DataPipeline - INFO - 퇴실일<입실일 오류 행 제거: 0건
+2026-03-01 20:00:44,278 - DataPipeline - INFO - 호텔 변환 완료! 컬럼: ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)', '요일', '월'], 총 14535건
+2026-03-01 20:00:46,585 - DataPipeline - INFO - 노이즈 제거 후 확인용 저장: C:\Users\PC\Desktop\Ryun\data\processed\hotel_cleaned_확인용_20260301_200044.xlsx
+2026-03-01 20:00:46,585 - DataPipeline - INFO - ============================================================
+2026-03-01 20:00:46,585 - DataPipeline - INFO - 호텔 데이터 분석 리포트
+2026-03-01 20:00:46,585 - DataPipeline - INFO - ============================================================
+2026-03-01 20:00:46,585 - DataPipeline - INFO - [OTA 분석] 예약경로(Source)별 점유율
+2026-03-01 20:00:46,589 - DataPipeline - INFO -   KOR: 13664건 (94.0%)
+2026-03-01 20:00:46,591 - DataPipeline - INFO -   CHN: 302건 (2.1%)
+2026-03-01 20:00:46,591 - DataPipeline - INFO -   SGP: 119건 (0.8%)
+2026-03-01 20:00:46,591 - DataPipeline - INFO -   TWN: 97건 (0.7%)
+2026-03-01 20:00:46,591 - DataPipeline - INFO -   USA: 54건 (0.4%)
+2026-03-01 20:00:46,591 - DataPipeline - INFO -   JPN: 53건 (0.4%)
+2026-03-01 20:00:46,591 - DataPipeline - INFO -   HKG: 41건 (0.3%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   MYS: 25건 (0.2%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   GBR: 20건 (0.1%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   CAN: 17건 (0.1%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   AUS: 12건 (0.1%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   RUS: 12건 (0.1%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   IND: 8건 (0.1%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   MNG: 8건 (0.1%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   VNM: 8건 (0.1%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   FRA: 7건 (0.0%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   DEU: 6건 (0.0%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   NLD: 6건 (0.0%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   HUN: 5건 (0.0%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   ESP: 5건 (0.0%)
+2026-03-01 20:00:46,592 - DataPipeline - INFO -   THA: 5건 (0.0%)
+2026-03-01 20:00:46,593 - DataPipeline - INFO -   ITA: 4건 (0.0%)
+2026-03-01 20:00:46,593 - DataPipeline - INFO -   : 4건 (0.0%)
+2026-03-01 20:00:46,593 - DataPipeline - INFO -   IRL: 4건 (0.0%)
+2026-03-01 20:00:46,593 - DataPipeline - INFO -   SWE: 3건 (0.0%)
+2026-03-01 20:00:46,593 - DataPipeline - INFO -   POL: 3건 (0.0%)
+2026-03-01 20:00:46,593 - DataPipeline - INFO -   COL: 3건 (0.0%)
+2026-03-01 20:00:46,593 - DataPipeline - INFO -   NZL: 3건 (0.0%)
+2026-03-01 20:00:46,593 - DataPipeline - INFO -   IDN: 3건 (0.0%)
+2026-03-01 20:00:46,593 - DataPipeline - INFO -   ISR: 2건 (0.0%)
+2026-03-01 20:00:46,593 - DataPipeline - INFO -   CYP: 2건 (0.0%)
+2026-03-01 20:00:46,593 - DataPipeline - INFO -   GHA: 2건 (0.0%)
+2026-03-01 20:00:46,593 - DataPipeline - INFO -   DNK: 2건 (0.0%)
+2026-03-01 20:00:46,593 - DataPipeline - INFO -   MLT: 2건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   CHE: 2건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   CZE: 2건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   ROU: 2건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   UZB: 2건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   ARE: 2건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   BEL: 2건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   KHM: 1건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   NOR: 1건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   PAK: 1건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   MEX: 1건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   ECU: 1건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   EST: 1건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   MAC: 1건 (0.0%)
+2026-03-01 20:00:46,594 - DataPipeline - INFO -   PHL: 1건 (0.0%)
+2026-03-01 20:00:46,595 - DataPipeline - INFO -   FIN: 1건 (0.0%)
+2026-03-01 20:00:46,595 - DataPipeline - INFO -   OTH: 1건 (0.0%)
+2026-03-01 20:00:46,595 - DataPipeline - INFO -   LAO: 1건 (0.0%)
+2026-03-01 20:00:46,595 - DataPipeline - INFO -   KAZ: 1건 (0.0%)
+2026-03-01 20:00:46,595 - DataPipeline - INFO - [시계열] 입실일 기준 요일별 투숙 건수 및 평균 ADR
+2026-03-01 20:00:46,613 - DataPipeline - INFO -   월요일: 투숙 1829건, 평균 ADR 127,712원
+2026-03-01 20:00:46,614 - DataPipeline - INFO -   화요일: 투숙 1715건, 평균 ADR 123,845원
+2026-03-01 20:00:46,615 - DataPipeline - INFO -   수요일: 투숙 1744건, 평균 ADR 138,723원
+2026-03-01 20:00:46,616 - DataPipeline - INFO -   목요일: 투숙 1648건, 평균 ADR 144,498원
+2026-03-01 20:00:46,618 - DataPipeline - INFO -   금요일: 투숙 2690건, 평균 ADR 138,067원
+2026-03-01 20:00:46,619 - DataPipeline - INFO -   토요일: 투숙 2658건, 평균 ADR 128,120원
+2026-03-01 20:00:46,622 - DataPipeline - INFO -   일요일: 투숙 2247건, 평균 ADR 122,129원
+2026-03-01 20:00:46,622 - DataPipeline - INFO - [시계열] 월별 총 매출액 및 평균 예약률(OCC) 트렌드
+2026-03-01 20:00:46,632 - DataPipeline - INFO -   2024-12: 매출액 7,613,680원, 예약건수 31건, OCC 1.0%
+2026-03-01 20:00:46,632 - DataPipeline - INFO -   2025-01: 매출액 183,007,293원, 예약건수 1385건, OCC 46.1%
+2026-03-01 20:00:46,632 - DataPipeline - INFO -   2025-02: 매출액 145,583,403원, 예약건수 1197건, OCC 44.1%
+2026-03-01 20:00:46,632 - DataPipeline - INFO -   2025-03: 매출액 95,324,623원, 예약건수 931건, OCC 31.0%
+2026-03-01 20:00:46,632 - DataPipeline - INFO -   2025-04: 매출액 114,077,675원, 예약건수 950건, OCC 32.6%
+2026-03-01 20:00:46,632 - DataPipeline - INFO -   2025-05: 매출액 128,551,415원, 예약건수 1054건, OCC 35.1%
+2026-03-01 20:00:46,632 - DataPipeline - INFO -   2025-06: 매출액 157,776,164원, 예약건수 1265건, OCC 43.5%
+2026-03-01 20:00:46,633 - DataPipeline - INFO -   2025-07: 매출액 179,798,618원, 예약건수 1275건, OCC 42.4%
+2026-03-01 20:00:46,633 - DataPipeline - INFO -   2025-08: 매출액 199,010,277원, 예약건수 1346건, OCC 44.8%
+2026-03-01 20:00:46,633 - DataPipeline - INFO -   2025-09: 매출액 137,459,064원, 예약건수 1198건, OCC 41.2%
+2026-03-01 20:00:46,633 - DataPipeline - INFO -   2025-10: 매출액 191,411,365원, 예약건수 1153건, OCC 38.3%
+2026-03-01 20:00:46,633 - DataPipeline - INFO -   2025-11: 매출액 164,229,087원, 예약건수 1291건, OCC 44.4%
+2026-03-01 20:00:46,633 - DataPipeline - INFO -   2025-12: 매출액 208,569,698원, 예약건수 1455건, OCC 48.4%
+2026-03-01 20:00:46,633 - DataPipeline - INFO - [객실 타입 분석] 타입별 예약 빈도
+2026-03-01 20:00:46,635 - DataPipeline - INFO -   STW: 5136건
+2026-03-01 20:00:46,635 - DataPipeline - INFO -   FTW: 4949건
+2026-03-01 20:00:46,635 - DataPipeline - INFO -   DDB: 1983건
+2026-03-01 20:00:46,635 - DataPipeline - INFO -   TRP: 1280건
+2026-03-01 20:00:46,635 - DataPipeline - INFO -   FDT: 1156건
+2026-03-01 20:00:46,635 - DataPipeline - INFO -   ASS: 27건
+2026-03-01 20:00:46,635 - DataPipeline - INFO -   4,977: 1건
+2026-03-01 20:00:46,635 - DataPipeline - INFO -   4,983: 1건
+2026-03-01 20:00:46,635 - DataPipeline - INFO -   246: 1건
+2026-03-01 20:00:46,635 - DataPipeline - INFO -   4,602: 1건
+2026-03-01 20:00:46,635 - DataPipeline - INFO - ============================================================
+2026-03-01 20:00:46,637 - DataPipeline - INFO - 리포트 파일 저장: C:\Users\PC\Desktop\Ryun\data\processed\hotel_report_20260301_200046.txt
+2026-03-01 20:00:46,638 - DataPipeline - INFO - 호텔 분석 데이터 적재 시작. 테이블: hotel_analytics
+2026-03-01 20:00:46,685 - DataPipeline - INFO - 총 14535건 hotel_analytics 적재 완료 → C:\Users\PC\Desktop\Ryun\data\processed\enterprise_dw.db
+2026-03-01 20:00:46,685 - DataPipeline - INFO - 호텔 파이프라인 완료.
+2026-03-01 20:03:03,081 - DataPipeline - INFO - ============================================================
+2026-03-01 20:03:03,082 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 20:03:03,082 - DataPipeline - INFO - ============================================================
+2026-03-01 20:03:03,082 - DataPipeline - INFO - xlsx 병합 대상: 4개 파일
+2026-03-01 20:03:04,558 - DataPipeline - INFO -   Global Guest List_20260301 (1).xlsx: 4978건 로드
+2026-03-01 20:03:05,790 - DataPipeline - INFO -   Global Guest List_20260301 (2).xlsx: 4984건 로드
+2026-03-01 20:03:05,900 - DataPipeline - INFO -   Global Guest List_20260301 (3).xlsx: 247건 로드
+2026-03-01 20:03:07,063 - DataPipeline - INFO -   Global Guest List_20260301.xlsx: 4603건 로드
+2026-03-01 20:03:07,074 - DataPipeline - INFO - 병합 완료: 총 14812건
+2026-03-01 20:03:07,077 - DataPipeline - INFO - 추출 완료! 총 14812건 로드.
+2026-03-01 20:03:07,087 - DataPipeline - INFO - 개인정보 컬럼 즉시 삭제: ['Guest Name', 'E-Mail', 'Mobile']
+2026-03-01 20:03:15,137 - DataPipeline - INFO - 육안 확인용 저장(컬럼 그대로): C:\Users\PC\Desktop\Ryun\data\processed\merged_hotel_확인용_20260301_200307.xlsx
+2026-03-01 20:03:15,142 - DataPipeline - INFO - 핵심 데이터만 유지(6컬럼): ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)']
+2026-03-01 20:03:15,143 - DataPipeline - INFO - 호텔 예약 데이터 변환(Transform)을 시작합니다...
+2026-03-01 20:03:15,151 - DataPipeline - INFO - 마켓코드 GRP/MICE 제거: 0건
+2026-03-01 20:03:15,156 - DataPipeline - INFO - 객실료 0원 이하 행 제거: 327건
+2026-03-01 20:03:15,167 - DataPipeline - INFO - 퇴실일<입실일 오류 행 제거: 0건
+2026-03-01 20:03:15,178 - DataPipeline - INFO - 호텔 변환 완료! 컬럼: ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)', '요일', '월'], 총 14485건
+2026-03-01 20:03:17,207 - DataPipeline - INFO - 노이즈 제거 후 확인용 저장: C:\Users\PC\Desktop\Ryun\data\processed\hotel_cleaned_확인용_20260301_200315.xlsx
+2026-03-01 20:03:17,207 - DataPipeline - INFO - ============================================================
+2026-03-01 20:03:17,207 - DataPipeline - INFO - 호텔 데이터 분석 리포트
+2026-03-01 20:03:17,207 - DataPipeline - INFO - ============================================================
+2026-03-01 20:03:17,208 - DataPipeline - INFO - [OTA 분석] 예약경로(Source)별 점유율
+2026-03-01 20:03:17,210 - DataPipeline - INFO -   KOR: 13614건 (94.0%)
+2026-03-01 20:03:17,210 - DataPipeline - INFO -   CHN: 302건 (2.1%)
+2026-03-01 20:03:17,210 - DataPipeline - INFO -   SGP: 119건 (0.8%)
+2026-03-01 20:03:17,210 - DataPipeline - INFO -   TWN: 97건 (0.7%)
+2026-03-01 20:03:17,211 - DataPipeline - INFO -   USA: 54건 (0.4%)
+2026-03-01 20:03:17,211 - DataPipeline - INFO -   JPN: 53건 (0.4%)
+2026-03-01 20:03:17,211 - DataPipeline - INFO -   HKG: 41건 (0.3%)
+2026-03-01 20:03:17,211 - DataPipeline - INFO -   MYS: 25건 (0.2%)
+2026-03-01 20:03:17,211 - DataPipeline - INFO -   GBR: 20건 (0.1%)
+2026-03-01 20:03:17,211 - DataPipeline - INFO -   CAN: 17건 (0.1%)
+2026-03-01 20:03:17,211 - DataPipeline - INFO -   AUS: 12건 (0.1%)
+2026-03-01 20:03:17,212 - DataPipeline - INFO -   RUS: 12건 (0.1%)
+2026-03-01 20:03:17,212 - DataPipeline - INFO -   IND: 8건 (0.1%)
+2026-03-01 20:03:17,212 - DataPipeline - INFO -   MNG: 8건 (0.1%)
+2026-03-01 20:03:17,212 - DataPipeline - INFO -   VNM: 8건 (0.1%)
+2026-03-01 20:03:17,212 - DataPipeline - INFO -   FRA: 7건 (0.0%)
+2026-03-01 20:03:17,212 - DataPipeline - INFO -   DEU: 6건 (0.0%)
+2026-03-01 20:03:17,212 - DataPipeline - INFO -   NLD: 6건 (0.0%)
+2026-03-01 20:03:17,212 - DataPipeline - INFO -   HUN: 5건 (0.0%)
+2026-03-01 20:03:17,213 - DataPipeline - INFO -   ESP: 5건 (0.0%)
+2026-03-01 20:03:17,213 - DataPipeline - INFO -   THA: 5건 (0.0%)
+2026-03-01 20:03:17,213 - DataPipeline - INFO -   ITA: 4건 (0.0%)
+2026-03-01 20:03:17,213 - DataPipeline - INFO -   : 4건 (0.0%)
+2026-03-01 20:03:17,213 - DataPipeline - INFO -   IRL: 4건 (0.0%)
+2026-03-01 20:03:17,213 - DataPipeline - INFO -   SWE: 3건 (0.0%)
+2026-03-01 20:03:17,213 - DataPipeline - INFO -   POL: 3건 (0.0%)
+2026-03-01 20:03:17,214 - DataPipeline - INFO -   COL: 3건 (0.0%)
+2026-03-01 20:03:17,214 - DataPipeline - INFO -   NZL: 3건 (0.0%)
+2026-03-01 20:03:17,214 - DataPipeline - INFO -   IDN: 3건 (0.0%)
+2026-03-01 20:03:17,214 - DataPipeline - INFO -   ISR: 2건 (0.0%)
+2026-03-01 20:03:17,214 - DataPipeline - INFO -   CYP: 2건 (0.0%)
+2026-03-01 20:03:17,214 - DataPipeline - INFO -   GHA: 2건 (0.0%)
+2026-03-01 20:03:17,214 - DataPipeline - INFO -   DNK: 2건 (0.0%)
+2026-03-01 20:03:17,215 - DataPipeline - INFO -   MLT: 2건 (0.0%)
+2026-03-01 20:03:17,215 - DataPipeline - INFO -   CHE: 2건 (0.0%)
+2026-03-01 20:03:17,215 - DataPipeline - INFO -   CZE: 2건 (0.0%)
+2026-03-01 20:03:17,215 - DataPipeline - INFO -   ROU: 2건 (0.0%)
+2026-03-01 20:03:17,215 - DataPipeline - INFO -   UZB: 2건 (0.0%)
+2026-03-01 20:03:17,215 - DataPipeline - INFO -   ARE: 2건 (0.0%)
+2026-03-01 20:03:17,215 - DataPipeline - INFO -   BEL: 2건 (0.0%)
+2026-03-01 20:03:17,216 - DataPipeline - INFO -   KHM: 1건 (0.0%)
+2026-03-01 20:03:17,216 - DataPipeline - INFO -   NOR: 1건 (0.0%)
+2026-03-01 20:03:17,216 - DataPipeline - INFO -   PAK: 1건 (0.0%)
+2026-03-01 20:03:17,216 - DataPipeline - INFO -   MEX: 1건 (0.0%)
+2026-03-01 20:03:17,216 - DataPipeline - INFO -   ECU: 1건 (0.0%)
+2026-03-01 20:03:17,216 - DataPipeline - INFO -   EST: 1건 (0.0%)
+2026-03-01 20:03:17,216 - DataPipeline - INFO -   MAC: 1건 (0.0%)
+2026-03-01 20:03:17,217 - DataPipeline - INFO -   PHL: 1건 (0.0%)
+2026-03-01 20:03:17,217 - DataPipeline - INFO -   FIN: 1건 (0.0%)
+2026-03-01 20:03:17,217 - DataPipeline - INFO -   OTH: 1건 (0.0%)
+2026-03-01 20:03:17,217 - DataPipeline - INFO -   LAO: 1건 (0.0%)
+2026-03-01 20:03:17,217 - DataPipeline - INFO -   KAZ: 1건 (0.0%)
+2026-03-01 20:03:17,217 - DataPipeline - INFO - [시계열] 입실일 기준 요일별 투숙 건수 및 평균 ADR
+2026-03-01 20:03:17,234 - DataPipeline - INFO -   월요일: 투숙 1826건, 평균 ADR 116,611원
+2026-03-01 20:03:17,235 - DataPipeline - INFO -   화요일: 투숙 1711건, 평균 ADR 113,716원
+2026-03-01 20:03:17,236 - DataPipeline - INFO -   수요일: 투숙 1740건, 평균 ADR 128,359원
+2026-03-01 20:03:17,240 - DataPipeline - INFO -   목요일: 투숙 1641건, 평균 ADR 133,532원
+2026-03-01 20:03:17,242 - DataPipeline - INFO -   금요일: 투숙 2679건, 평균 ADR 126,141원
+2026-03-01 20:03:17,243 - DataPipeline - INFO -   토요일: 투숙 2644건, 평균 ADR 116,848원
+2026-03-01 20:03:17,244 - DataPipeline - INFO -   일요일: 투숙 2240건, 평균 ADR 111,816원
+2026-03-01 20:03:17,244 - DataPipeline - INFO - [시계열] 월별 총 매출액 및 평균 예약률(OCC) 트렌드
+2026-03-01 20:03:17,252 - DataPipeline - INFO -   2024-12: 매출액 7,426,680원, 예약건수 31건, OCC 1.0%
+2026-03-01 20:03:17,252 - DataPipeline - INFO -   2025-01: 매출액 166,029,591원, 예약건수 1382건, OCC 46.0%
+2026-03-01 20:03:17,253 - DataPipeline - INFO -   2025-02: 매출액 132,524,803원, 예약건수 1194건, OCC 44.0%
+2026-03-01 20:03:17,253 - DataPipeline - INFO -   2025-03: 매출액 87,012,323원, 예약건수 928건, OCC 30.9%
+2026-03-01 20:03:17,253 - DataPipeline - INFO -   2025-04: 매출액 105,470,775원, 예약건수 947건, OCC 32.5%
+2026-03-01 20:03:17,254 - DataPipeline - INFO -   2025-05: 매출액 115,588,315원, 예약건수 1049건, OCC 34.9%
+2026-03-01 20:03:17,254 - DataPipeline - INFO -   2025-06: 매출액 146,059,664원, 예약건수 1261건, OCC 43.3%
+2026-03-01 20:03:17,255 - DataPipeline - INFO -   2025-07: 매출액 165,424,118원, 예약건수 1274건, OCC 42.4%
+2026-03-01 20:03:17,255 - DataPipeline - INFO -   2025-08: 매출액 180,899,177원, 예약건수 1339건, OCC 44.5%
+2026-03-01 20:03:17,255 - DataPipeline - INFO -   2025-09: 매출액 127,722,064원, 예약건수 1192건, OCC 41.0%
+2026-03-01 20:03:17,256 - DataPipeline - INFO -   2025-10: 매출액 174,739,765원, 예약건수 1150건, OCC 38.2%
+2026-03-01 20:03:17,256 - DataPipeline - INFO -   2025-11: 매출액 149,451,787원, 예약건수 1282건, OCC 44.1%
+2026-03-01 20:03:17,256 - DataPipeline - INFO -   2025-12: 매출액 188,967,498원, 예약건수 1452건, OCC 48.3%
+2026-03-01 20:03:17,257 - DataPipeline - INFO - [객실 타입 분석] 타입별 예약 빈도
+2026-03-01 20:03:17,260 - DataPipeline - INFO -   STW: 5125건
+2026-03-01 20:03:17,260 - DataPipeline - INFO -   FTW: 4922건
+2026-03-01 20:03:17,260 - DataPipeline - INFO -   DDB: 1981건
+2026-03-01 20:03:17,260 - DataPipeline - INFO -   TRP: 1278건
+2026-03-01 20:03:17,261 - DataPipeline - INFO -   FDT: 1149건
+2026-03-01 20:03:17,261 - DataPipeline - INFO -   ASS: 26건
+2026-03-01 20:03:17,261 - DataPipeline - INFO -   4,977: 1건
+2026-03-01 20:03:17,261 - DataPipeline - INFO -   4,983: 1건
+2026-03-01 20:03:17,261 - DataPipeline - INFO -   246: 1건
+2026-03-01 20:03:17,261 - DataPipeline - INFO -   4,602: 1건
+2026-03-01 20:03:17,261 - DataPipeline - INFO - ============================================================
+2026-03-01 20:03:17,263 - DataPipeline - INFO - 리포트 파일 저장: C:\Users\PC\Desktop\Ryun\data\processed\hotel_report_20260301_200317.txt
+2026-03-01 20:03:17,264 - DataPipeline - INFO - 호텔 분석 데이터 적재 시작. 테이블: hotel_analytics
+2026-03-01 20:03:17,312 - DataPipeline - INFO - 총 14485건 hotel_analytics 적재 완료 → C:\Users\PC\Desktop\Ryun\data\processed\enterprise_dw.db
+2026-03-01 20:03:17,312 - DataPipeline - INFO - 호텔 파이프라인 완료.
+2026-03-01 20:09:16,738 - DataPipeline - INFO - ============================================================
+2026-03-01 20:09:16,739 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 20:09:16,739 - DataPipeline - INFO - ============================================================
+2026-03-01 20:09:16,739 - DataPipeline - ERROR - 호텔 데이터 추출 실패. data/raw/hotel/ 에 엑셀(Reservation List_20260301.xlsx) 또는 CSV를 두세요.
+2026-03-01 20:11:01,114 - DataPipeline - INFO - ============================================================
+2026-03-01 20:11:01,114 - DataPipeline - INFO - 호텔 데이터 파이프라인 시작
+2026-03-01 20:11:01,115 - DataPipeline - INFO - ============================================================
+2026-03-01 20:11:01,115 - DataPipeline - INFO - Merge target: 4 xlsx file(s)
+2026-03-01 20:11:02,514 - DataPipeline - INFO -   Global Guest List_20260301 (1).xlsx: 4978 rows
+2026-03-01 20:11:03,729 - DataPipeline - INFO -   Global Guest List_20260301 (2).xlsx: 4984 rows
+2026-03-01 20:11:03,814 - DataPipeline - INFO -   Global Guest List_20260301 (3).xlsx: 247 rows
+2026-03-01 20:11:04,942 - DataPipeline - INFO -   Global Guest List_20260301.xlsx: 4603 rows
+2026-03-01 20:11:04,955 - DataPipeline - INFO - Merge complete: 14812 rows total
+2026-03-01 20:11:04,956 - DataPipeline - INFO - Merge basis: First file's column structure. Columns: ['VIP', 'Sts', 'Rsvn No', 'Group ID', 'Room No', 'Guest Name', 'Arr Date', 'Dep Date', 'Nts', 'Rm Ty', 'Service Code', 'Rms', 'Gsts', 'Room Rate', 'Service Rate', 'Total Amount', 'Account', 'Ra Ty', 'Pkg', 'Ma Ty', 'So Ty', 'Sales Person', 'Nat', 'Region', 'Tax', 'Link Rsvn', 'OTA No', 'Block', 'Car No', 'Rsvn Date', 'Confirm Date', 'Confirm by', 'Cancel Date', 'Mobile', 'E-Mail', 'Visit', 'ADR', 'Remark', 'Caller', 'Caller Tel']. Rows concatenated (no key).
+2026-03-01 20:11:04,956 - DataPipeline - INFO - Merged Excel will be saved as merged_hotel_for_review_*.xlsx in data/processed/
+2026-03-01 20:11:04,960 - DataPipeline - INFO - Extract complete: 14812 rows loaded.
+2026-03-01 20:11:13,560 - DataPipeline - INFO - Saved for review (merge only, all columns): C:\Users\PC\Desktop\Ryun\data\processed\merged_hotel_for_review_20260301_201104.xlsx
+2026-03-01 20:11:13,567 - DataPipeline - INFO - PII columns dropped (for pipeline): ['Guest Name', 'E-Mail', 'Mobile']
+2026-03-01 20:11:13,573 - DataPipeline - INFO - Pipeline: slimmed to 6 columns: ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)']
+2026-03-01 20:11:13,573 - DataPipeline - INFO - 호텔 예약 데이터 변환(Transform)을 시작합니다...
+2026-03-01 20:11:13,586 - DataPipeline - INFO - 마켓코드 GRP/MICE 제거: 0건
+2026-03-01 20:11:13,589 - DataPipeline - INFO - 객실료 0원 이하 행 제거: 327건
+2026-03-01 20:11:13,604 - DataPipeline - INFO - 퇴실일<입실일 오류 행 제거: 0건
+2026-03-01 20:11:13,614 - DataPipeline - INFO - 호텔 변환 완료! 컬럼: ['예약번호', '입실일', '퇴실일', '객실타입', '예약경로(Source)', '객실료(Rate)', '요일', '월'], 총 14485건
+2026-03-01 20:11:15,651 - DataPipeline - INFO - Saved for review (after noise removal): C:\Users\PC\Desktop\Ryun\data\processed\hotel_cleaned_for_review_20260301_201113.xlsx
+2026-03-01 20:11:15,651 - DataPipeline - INFO - ============================================================
+2026-03-01 20:11:15,652 - DataPipeline - INFO - 호텔 데이터 분석 리포트
+2026-03-01 20:11:15,652 - DataPipeline - INFO - ============================================================
+2026-03-01 20:11:15,652 - DataPipeline - INFO - [OTA 분석] 예약경로(Source)별 점유율
+2026-03-01 20:11:15,654 - DataPipeline - INFO -   KOR: 13614건 (94.0%)
+2026-03-01 20:11:15,655 - DataPipeline - INFO -   CHN: 302건 (2.1%)
+2026-03-01 20:11:15,655 - DataPipeline - INFO -   SGP: 119건 (0.8%)
+2026-03-01 20:11:15,655 - DataPipeline - INFO -   TWN: 97건 (0.7%)
+2026-03-01 20:11:15,655 - DataPipeline - INFO -   USA: 54건 (0.4%)
+2026-03-01 20:11:15,655 - DataPipeline - INFO -   JPN: 53건 (0.4%)
+2026-03-01 20:11:15,655 - DataPipeline - INFO -   HKG: 41건 (0.3%)
+2026-03-01 20:11:15,655 - DataPipeline - INFO -   MYS: 25건 (0.2%)
+2026-03-01 20:11:15,656 - DataPipeline - INFO -   GBR: 20건 (0.1%)
+2026-03-01 20:11:15,656 - DataPipeline - INFO -   CAN: 17건 (0.1%)
+2026-03-01 20:11:15,656 - DataPipeline - INFO -   AUS: 12건 (0.1%)
+2026-03-01 20:11:15,656 - DataPipeline - INFO -   RUS: 12건 (0.1%)
+2026-03-01 20:11:15,656 - DataPipeline - INFO -   IND: 8건 (0.1%)
+2026-03-01 20:11:15,656 - DataPipeline - INFO -   MNG: 8건 (0.1%)
+2026-03-01 20:11:15,656 - DataPipeline - INFO -   VNM: 8건 (0.1%)
+2026-03-01 20:11:15,656 - DataPipeline - INFO -   FRA: 7건 (0.0%)
+2026-03-01 20:11:15,657 - DataPipeline - INFO -   DEU: 6건 (0.0%)
+2026-03-01 20:11:15,657 - DataPipeline - INFO -   NLD: 6건 (0.0%)
+2026-03-01 20:11:15,657 - DataPipeline - INFO -   HUN: 5건 (0.0%)
+2026-03-01 20:11:15,657 - DataPipeline - INFO -   ESP: 5건 (0.0%)
+2026-03-01 20:11:15,657 - DataPipeline - INFO -   THA: 5건 (0.0%)
+2026-03-01 20:11:15,657 - DataPipeline - INFO -   ITA: 4건 (0.0%)
+2026-03-01 20:11:15,657 - DataPipeline - INFO -   : 4건 (0.0%)
+2026-03-01 20:11:15,657 - DataPipeline - INFO -   IRL: 4건 (0.0%)
+2026-03-01 20:11:15,657 - DataPipeline - INFO -   SWE: 3건 (0.0%)
+2026-03-01 20:11:15,658 - DataPipeline - INFO -   POL: 3건 (0.0%)
+2026-03-01 20:11:15,658 - DataPipeline - INFO -   COL: 3건 (0.0%)
+2026-03-01 20:11:15,658 - DataPipeline - INFO -   NZL: 3건 (0.0%)
+2026-03-01 20:11:15,658 - DataPipeline - INFO -   IDN: 3건 (0.0%)
+2026-03-01 20:11:15,658 - DataPipeline - INFO -   ISR: 2건 (0.0%)
+2026-03-01 20:11:15,658 - DataPipeline - INFO -   CYP: 2건 (0.0%)
+2026-03-01 20:11:15,658 - DataPipeline - INFO -   GHA: 2건 (0.0%)
+2026-03-01 20:11:15,659 - DataPipeline - INFO -   DNK: 2건 (0.0%)
+2026-03-01 20:11:15,659 - DataPipeline - INFO -   MLT: 2건 (0.0%)
+2026-03-01 20:11:15,659 - DataPipeline - INFO -   CHE: 2건 (0.0%)
+2026-03-01 20:11:15,659 - DataPipeline - INFO -   CZE: 2건 (0.0%)
+2026-03-01 20:11:15,659 - DataPipeline - INFO -   ROU: 2건 (0.0%)
+2026-03-01 20:11:15,659 - DataPipeline - INFO -   UZB: 2건 (0.0%)
+2026-03-01 20:11:15,659 - DataPipeline - INFO -   ARE: 2건 (0.0%)
+2026-03-01 20:11:15,659 - DataPipeline - INFO -   BEL: 2건 (0.0%)
+2026-03-01 20:11:15,660 - DataPipeline - INFO -   KHM: 1건 (0.0%)
+2026-03-01 20:11:15,660 - DataPipeline - INFO -   NOR: 1건 (0.0%)
+2026-03-01 20:11:15,660 - DataPipeline - INFO -   PAK: 1건 (0.0%)
+2026-03-01 20:11:15,660 - DataPipeline - INFO -   MEX: 1건 (0.0%)
+2026-03-01 20:11:15,660 - DataPipeline - INFO -   ECU: 1건 (0.0%)
+2026-03-01 20:11:15,660 - DataPipeline - INFO -   EST: 1건 (0.0%)
+2026-03-01 20:11:15,660 - DataPipeline - INFO -   MAC: 1건 (0.0%)
+2026-03-01 20:11:15,660 - DataPipeline - INFO -   PHL: 1건 (0.0%)
+2026-03-01 20:11:15,661 - DataPipeline - INFO -   FIN: 1건 (0.0%)
+2026-03-01 20:11:15,661 - DataPipeline - INFO -   OTH: 1건 (0.0%)
+2026-03-01 20:11:15,661 - DataPipeline - INFO -   LAO: 1건 (0.0%)
+2026-03-01 20:11:15,661 - DataPipeline - INFO -   KAZ: 1건 (0.0%)
+2026-03-01 20:11:15,661 - DataPipeline - INFO - [시계열] 입실일 기준 요일별 투숙 건수 및 평균 ADR
+2026-03-01 20:11:15,672 - DataPipeline - INFO -   월요일: 투숙 1826건, 평균 ADR 116,611원
+2026-03-01 20:11:15,675 - DataPipeline - INFO -   화요일: 투숙 1711건, 평균 ADR 113,716원
+2026-03-01 20:11:15,676 - DataPipeline - INFO -   수요일: 투숙 1740건, 평균 ADR 128,359원
+2026-03-01 20:11:15,677 - DataPipeline - INFO -   목요일: 투숙 1641건, 평균 ADR 133,532원
+2026-03-01 20:11:15,678 - DataPipeline - INFO -   금요일: 투숙 2679건, 평균 ADR 126,141원
+2026-03-01 20:11:15,679 - DataPipeline - INFO -   토요일: 투숙 2644건, 평균 ADR 116,848원
+2026-03-01 20:11:15,680 - DataPipeline - INFO -   일요일: 투숙 2240건, 평균 ADR 111,816원
+2026-03-01 20:11:15,680 - DataPipeline - INFO - [시계열] 월별 총 매출액 및 평균 예약률(OCC) 트렌드
+2026-03-01 20:11:15,689 - DataPipeline - INFO -   2024-12: 매출액 7,426,680원, 예약건수 31건, OCC 1.0%
+2026-03-01 20:11:15,690 - DataPipeline - INFO -   2025-01: 매출액 166,029,591원, 예약건수 1382건, OCC 46.0%
+2026-03-01 20:11:15,691 - DataPipeline - INFO -   2025-02: 매출액 132,524,803원, 예약건수 1194건, OCC 44.0%
+2026-03-01 20:11:15,691 - DataPipeline - INFO -   2025-03: 매출액 87,012,323원, 예약건수 928건, OCC 30.9%
+2026-03-01 20:11:15,692 - DataPipeline - INFO -   2025-04: 매출액 105,470,775원, 예약건수 947건, OCC 32.5%
+2026-03-01 20:11:15,692 - DataPipeline - INFO -   2025-05: 매출액 115,588,315원, 예약건수 1049건, OCC 34.9%
+2026-03-01 20:11:15,692 - DataPipeline - INFO -   2025-06: 매출액 146,059,664원, 예약건수 1261건, OCC 43.3%
+2026-03-01 20:11:15,692 - DataPipeline - INFO -   2025-07: 매출액 165,424,118원, 예약건수 1274건, OCC 42.4%
+2026-03-01 20:11:15,693 - DataPipeline - INFO -   2025-08: 매출액 180,899,177원, 예약건수 1339건, OCC 44.5%
+2026-03-01 20:11:15,693 - DataPipeline - INFO -   2025-09: 매출액 127,722,064원, 예약건수 1192건, OCC 41.0%
+2026-03-01 20:11:15,693 - DataPipeline - INFO -   2025-10: 매출액 174,739,765원, 예약건수 1150건, OCC 38.2%
+2026-03-01 20:11:15,693 - DataPipeline - INFO -   2025-11: 매출액 149,451,787원, 예약건수 1282건, OCC 44.1%
+2026-03-01 20:11:15,693 - DataPipeline - INFO -   2025-12: 매출액 188,967,498원, 예약건수 1452건, OCC 48.3%
+2026-03-01 20:11:15,694 - DataPipeline - INFO - [객실 타입 분석] 타입별 예약 빈도
+2026-03-01 20:11:15,695 - DataPipeline - INFO -   STW: 5125건
+2026-03-01 20:11:15,696 - DataPipeline - INFO -   FTW: 4922건
+2026-03-01 20:11:15,696 - DataPipeline - INFO -   DDB: 1981건
+2026-03-01 20:11:15,696 - DataPipeline - INFO -   TRP: 1278건
+2026-03-01 20:11:15,696 - DataPipeline - INFO -   FDT: 1149건
+2026-03-01 20:11:15,696 - DataPipeline - INFO -   ASS: 26건
+2026-03-01 20:11:15,696 - DataPipeline - INFO -   4,977: 1건
+2026-03-01 20:11:15,696 - DataPipeline - INFO -   4,983: 1건
+2026-03-01 20:11:15,697 - DataPipeline - INFO -   246: 1건
+2026-03-01 20:11:15,697 - DataPipeline - INFO -   4,602: 1건
+2026-03-01 20:11:15,697 - DataPipeline - INFO - ============================================================
+2026-03-01 20:11:15,698 - DataPipeline - INFO - 리포트 파일 저장: C:\Users\PC\Desktop\Ryun\data\processed\hotel_report_20260301_201115.txt
+2026-03-01 20:11:15,701 - DataPipeline - INFO - 호텔 분석 데이터 적재 시작. 테이블: hotel_analytics
+2026-03-01 20:11:15,758 - DataPipeline - INFO - 총 14485건 hotel_analytics 적재 완료 → C:\Users\PC\Desktop\Ryun\data\processed\enterprise_dw.db
+2026-03-01 20:11:15,759 - DataPipeline - INFO - 호텔 파이프라인 완료.
+2026-03-01 20:58:08,305 - DataPipeline - INFO - 호텔 BI 리포트 생성 시작
+2026-03-01 20:58:10,536 - DataPipeline - INFO - 데이터 로드 완료: 14618행
+2026-03-01 20:58:24,714 - DataPipeline - INFO - 호텔 BI 리포트 생성 시작
+2026-03-01 20:58:26,996 - DataPipeline - INFO - 데이터 로드 완료: 14618행
+2026-03-01 20:59:00,581 - DataPipeline - INFO - 호텔 BI 리포트 생성 시작
+2026-03-01 20:59:02,771 - DataPipeline - INFO - 데이터 로드 완료: 14618행
+2026-03-01 20:59:02,862 - DataPipeline - INFO - 리포트 저장: C:\Users\PC\Desktop\Ryun\data\processed\hotel_report_bi_20260301_205902.txt
